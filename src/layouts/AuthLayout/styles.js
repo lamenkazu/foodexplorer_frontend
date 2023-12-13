@@ -7,7 +7,7 @@ export const Container = styled.div`
   grid-template-columns: 100%;
   grid-template-rows: auto auto;
 
-  margin: 15.8rem auto;
+  margin: 7.8rem auto;
 
   grid-template-areas:
     "title"

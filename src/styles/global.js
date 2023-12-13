@@ -9,6 +9,7 @@ export const GlobalStyles = createGlobalStyle`
 
     :root{
         font-size: 62.5%;
+        -webkit-font-smoothing: antialiased;        
 
         /* font-family: 'DM Sans', sans-serif;
         font-family: 'Poppins', sans-serif;
@@ -23,11 +24,15 @@ export const GlobalStyles = createGlobalStyle`
         background-color: ${({ theme }) => theme.DARK_400};
         color: ${({ theme }) => theme.LIGHT_100};
 
-        -webkit-font-smoothing: antialiased;        
+    }
+
+    label, input, textarea{
+        font-family: "Roboto", sans-serif;
     }
 
     a{
         text-decoration: none;
+        color: ${({ theme }) => theme.LIGHT_100};
     }
 
     input[type=number]::-webkit-inner-spin-button { 
