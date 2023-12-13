@@ -27,6 +27,21 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  const signUp = ({ name, email, password }) => {
+    api
+      .post("/Users", { name, email, password })
+      .then(() => {
+        alert("Registro realizado com sucesso!");
+      })
+      .catch((err) => {
+        if (err.response) {
+          alert(err.response.data.message);
+        } else {
+          alert("Não foi possível realizar o registro.");
+        }
+      });
+  };
+
   const signOut = () => {
     localStorage.removeItem("@food_explorer:user");
 
@@ -34,7 +49,7 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ signIn, signOut, user: data.user }}>
+    <AuthContext.Provider value={{ signIn, signUp, signOut, user: data.user }}>
       {children}
     </AuthContext.Provider>
   );
