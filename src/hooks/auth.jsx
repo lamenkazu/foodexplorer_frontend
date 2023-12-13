@@ -2,6 +2,7 @@ import { useState, useEffect, createContext, useContext } from "react";
 import { api } from "./../services/api";
 
 const AuthContext = createContext({});
+const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
   const [data, setData] = useState({});
@@ -48,15 +49,21 @@ const AuthProvider = ({ children }) => {
     setData({});
   };
 
+  useEffect(() => {
+    const user = localStorage.getItem("@food_explorer:user");
+
+    if (user) {
+      setData({
+        user: JSON.parse(user),
+      });
+    }
+  }, []);
+
   return (
     <AuthContext.Provider value={{ signIn, signUp, signOut, user: data.user }}>
       {children}
     </AuthContext.Provider>
   );
-};
-
-const useAuth = () => {
-  return useContext(AuthContext);
 };
 
 export { AuthProvider, useAuth };
