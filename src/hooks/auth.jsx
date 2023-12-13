@@ -6,7 +6,26 @@ const AuthContext = createContext({});
 export const AuthProvider = ({ children }) => {
   const [data, setData] = useState({});
 
-  const signIn = async ({ email, password }) => {};
+  const signIn = async ({ email, password }) => {
+    try {
+      const response = await api.post(
+        "/Sessions",
+        { email, password },
+        { withCredentials: true }
+      );
+      const { user } = response.data;
+
+      localStorage.setItem("@food_explorer:user", JSON.stringify(user));
+
+      setData({ user });
+    } catch (err) {
+      if (err.response) {
+        alert(err.response.data.message);
+      } else {
+        alert("Não foi possível conectar");
+      }
+    }
+  };
 
   const signOut = () => {};
 
