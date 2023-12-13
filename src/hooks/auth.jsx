@@ -27,7 +27,11 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const signOut = () => {};
+  const signOut = () => {
+    localStorage.removeItem("@food_explorer:user");
+
+    setData({});
+  };
 
   return (
     <AuthContext.Provider value={{ signIn, signOut, user: data.user }}>
