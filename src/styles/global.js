@@ -9,13 +9,21 @@ export const GlobalStyles = createGlobalStyle`
 
     :root{
         font-size: 62.5%;
+
+        /* font-family: 'DM Sans', sans-serif;
+        font-family: 'Poppins', sans-serif;
+        font-family: 'Roboto', sans-serif; */
     }
 
     body, input, button, textarea{
+        font-family: 'Poppins', sans-serif;
         font-size: 1.6rem;
         outline: none;
 
-        -webkit-font-smoothing: antialiased;
+        background-color: ${({ theme }) => theme.DARK_400};
+        color: ${({ theme }) => theme.LIGHT_100};
+
+        -webkit-font-smoothing: antialiased;        
     }
 
     a{
