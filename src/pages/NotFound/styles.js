@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100vh;
+  padding-top: 10rem;
   width: 100%;
 
   display: flex;
@@ -9,8 +9,10 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
 
+  color: ${({ theme }) => theme.LIGHT_400};
+
   > a {
-    color: ${({ theme }) => theme.DARK_200};
+    color: ${({ theme }) => theme.BLUE_200};
     margin-top: 24px;
   }
 `;

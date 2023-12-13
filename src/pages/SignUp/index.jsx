@@ -56,7 +56,7 @@ export const SignUp = () => {
         onChange={handleFormChanges}
       />
       <Button title="Criar conta" onClick={handleSignIn} />
-      <StyledLink to="/register" title="Criar uma conta" />
+      <StyledLink to="/" title="Criar uma conta" />
     </Container>
   );
 };
