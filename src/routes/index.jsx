@@ -13,9 +13,11 @@ export const Routes = () => {
   const { user, signOut } = useAuth();
 
   useEffect(() => {
-    api.get("/Users/validate").catch((err) => {
-      if (err.response?.status === 401) signOut();
-    });
+    if (user) {
+      api.get("/Users/validate").catch((err) => {
+        if (err.response?.status === 401) signOut();
+      });
+    }
   }, []);
 
   return (
