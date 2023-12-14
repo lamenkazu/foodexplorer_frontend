@@ -9,8 +9,10 @@ export const Container = styled.header`
   flex-direction: row;
   justify-content: space-between;
 
-  > img {
-    height: 2.4rem;
+  > a {
+    img {
+      height: 2.4rem;
+    }
   }
 `;
 

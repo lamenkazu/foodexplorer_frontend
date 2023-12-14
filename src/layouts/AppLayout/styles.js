@@ -3,12 +3,16 @@ import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
   max-width: min(100%, ${DEVICE_BREAKPOINTS.MD});
-  min-width: ${DEVICE_BREAKPOINTS.SM};
   height: 100dvh;
 
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 11.4rem auto 7.7rem;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
   margin: 0 auto;
 

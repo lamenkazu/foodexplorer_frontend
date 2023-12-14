@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../styles/deviceBreakpoints";
 
 export const GlobalStyles = createGlobalStyle`
     *{
@@ -14,6 +15,11 @@ export const GlobalStyles = createGlobalStyle`
         /* font-family: 'DM Sans', sans-serif;
         font-family: 'Poppins', sans-serif;
         font-family: 'Roboto', sans-serif; */
+    }
+
+    body{
+      min-width: ${DEVICE_BREAKPOINTS.SM};
+
     }
 
     body, input, button, textarea{

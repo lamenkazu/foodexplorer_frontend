@@ -1,4 +1,11 @@
-import { useState, useEffect, createContext, useContext } from "react";
+import {
+  useState,
+  useEffect,
+  createContext,
+  useContext,
+  useCallback,
+  useMemo,
+} from "react";
 import { api } from "./../services/api";
 
 const AuthContext = createContext({});
@@ -7,7 +14,7 @@ const useAuth = () => useContext(AuthContext);
 const AuthProvider = ({ children }) => {
   const [data, setData] = useState({});
 
-  const signIn = async ({ email, password }) => {
+  const signIn = useCallback(async ({ email, password }) => {
     try {
       const response = await api.post(
         "/Sessions",
@@ -26,9 +33,9 @@ const AuthProvider = ({ children }) => {
         alert("Não foi possível conectar");
       }
     }
-  };
+  });
 
-  const signUp = ({ name, email, password }) => {
+  const signUp = useCallback(({ name, email, password }) => {
     api
       .post("/Users", { name, email, password })
       .then(() => {
@@ -41,13 +48,23 @@ const AuthProvider = ({ children }) => {
           alert("Não foi possível realizar o registro.");
         }
       });
-  };
+  });
 
-  const signOut = () => {
+  const signOut = useCallback(() => {
     localStorage.removeItem("@food_explorer:user");
 
     setData({});
-  };
+  });
+
+  const authValue = useMemo(
+    () => ({
+      signIn,
+      signUp,
+      signOut,
+      user: data.user,
+    }),
+    [signIn, signUp, signOut, data.user]
+  );
 
   useEffect(() => {
     const user = localStorage.getItem("@food_explorer:user");
@@ -60,9 +77,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ signIn, signUp, signOut, user: data.user }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>
   );
 };
 
