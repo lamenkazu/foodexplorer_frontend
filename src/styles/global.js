@@ -17,13 +17,16 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     body, input, button, textarea{
-        font-family: 'Poppins', sans-serif;
         font-size: 1.6rem;
         outline: none;
 
         background-color: ${({ theme }) => theme.DARK_400};
         color: ${({ theme }) => theme.LIGHT_100};
 
+    }
+
+    body, input, button, textarea, p{
+        font-family: 'Poppins', sans-serif;
     }
 
     label, input, textarea{
