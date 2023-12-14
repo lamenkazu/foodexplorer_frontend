@@ -4,8 +4,9 @@ import { Container } from "./styles";
 export function NotFound() {
   return (
     <Container>
-      <h1>Página indisponível</h1>
+      <h1>404!</h1>
+      <h2>Página indisponível</h2>
       <Link to="/">voltar para o início</Link>
     </Container>
-  )
+  );
 }

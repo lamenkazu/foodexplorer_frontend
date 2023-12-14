@@ -7,7 +7,7 @@ export const Container = styled.div`
   grid-template-columns: 100%;
   grid-template-rows: auto auto;
 
-  margin: 7.8rem auto;
+  margin: 5.8rem auto;
 
   grid-template-areas:
     "title"
@@ -17,5 +17,7 @@ export const Container = styled.div`
     grid-area: title;
     width: 27.8rem;
     height: 4.4rem;
+
+    margin-bottom: 7.3rem;
   }
 `;
