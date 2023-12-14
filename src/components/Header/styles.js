@@ -77,6 +77,7 @@ export const Title = styled.div`
 
   > svg {
     font-size: 2.5rem;
+    cursor: pointer;
   }
 `;
 export const Content = styled.div`
@@ -119,4 +120,6 @@ export const SideBarItem = styled.div`
   margin-inline: 2.8rem;
   padding: 1rem;
   border-bottom: 1px solid ${({ theme }) => theme.DARK_1000};
+
+  cursor: pointer;
 `;

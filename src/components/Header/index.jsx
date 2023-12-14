@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
 
 import {
   Container,
@@ -19,8 +20,17 @@ import { IoCloseOutline } from "react-icons/io5";
 import { PiMagnifyingGlassThin } from "react-icons/pi";
 
 export const Header = () => {
+  const navigate = useNavigate();
+  const { signOut } = useAuth();
   const [sideBar, setSideBar] = useState(false);
   const handleSideBar = () => setSideBar(!sideBar);
+
+  const handleSignOut = () => {
+    if (confirm("Quer mesmo sair?")) {
+      signOut();
+      navigate("/");
+    }
+  };
 
   return (
     <Container>
@@ -36,13 +46,13 @@ export const Header = () => {
               <PiMagnifyingGlassThin />
               <input type="text" name="" id="" />
             </Search>
-            <SideBarItem>Sair</SideBarItem>
+            <SideBarItem onClick={handleSignOut}>Sair</SideBarItem>
           </Content>
         </SideBar>
       )}
 
-      <Menu onClick={handleSideBar}>
-        <IoMenu />
+      <Menu>
+        <IoMenu onClick={handleSideBar} />
       </Menu>
       <Link to="/">
         <img src={brandImg} alt="Logo Food Explorer" />
