@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
+import { AppLayout } from "../layouts/AppLayout";
+
 import { Home } from "../pages/Home";
 import { ViewDish } from "../pages/ViewDish";
 import { NewDish } from "../pages/NewDish";
@@ -9,10 +11,12 @@ import { NotFound } from "../pages/NotFound";
 export function AdminRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/view" element={<ViewDish />} />
-      <Route path="/new" element={<NewDish />} />
-      <Route path="/edit" element={<EditDish />} />
+      <Route path="/" element={<AppLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/view" element={<ViewDish />} />
+        <Route path="/new" element={<NewDish />} />
+        <Route path="/edit" element={<EditDish />} />
+      </Route>
 
       <Route path="*" exact={true} element={<NotFound />} />
     </Routes>

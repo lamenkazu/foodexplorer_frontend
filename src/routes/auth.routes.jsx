@@ -11,9 +11,8 @@ export function AuthRoutes() {
       <Route path="/" element={<AuthLayout />}>
         <Route path="/" element={<SignIn />} />
         <Route path="/register" element={<SignUp />} />
-
-        <Route path="*" exact={true} element={<NotFound />} />
       </Route>
+      <Route path="*" exact={true} element={<NotFound />} />
     </Routes>
   );
 }
