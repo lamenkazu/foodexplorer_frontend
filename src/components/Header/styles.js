@@ -62,6 +62,7 @@ export const SideBar = styled.div`
   padding: 6.4rem 2.8rem 3.2rem;
   z-index: 1;
   width: 100%;
+  background-color: ${({ theme }) => theme.DARK_700};
 `;
 
 export const Title = styled.div`
@@ -70,8 +71,6 @@ export const Title = styled.div`
   gap: 1.6rem;
 
   width: 100vw;
-
-  background-color: ${({ theme }) => theme.DARK_700};
 
   > h3 {
     font-size: 2.1rem;
