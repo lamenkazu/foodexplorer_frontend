@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "./../../styles/deviceBreakpoints";
 
 export const Container = styled.header`
   background-color: ${({ theme }) => theme.DARK_700};
@@ -22,6 +23,10 @@ export const Menu = styled.button`
 
   > svg {
     font-size: 2.5rem;
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+    display: none;
   }
 `;
 
