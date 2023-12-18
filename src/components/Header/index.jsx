@@ -12,12 +12,16 @@ import {
   Content,
   SideBarItem,
   Search,
+  SignOut,
 } from "./styles";
-import { IoMenu } from "react-icons/io5";
+import { Button } from "../Button";
+
 import brandImg from "../../assets/Brand.png";
+import { IoMenu } from "react-icons/io5";
 import { PiReceiptLight } from "react-icons/pi";
 import { IoCloseOutline } from "react-icons/io5";
 import { PiMagnifyingGlassThin } from "react-icons/pi";
+import { GoSignOut } from "react-icons/go";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -54,15 +58,27 @@ export const Header = () => {
       <Menu>
         <IoMenu onClick={handleSideBar} />
       </Menu>
+
       <Link to="/">
         <img src={brandImg} alt="Logo Food Explorer" />
       </Link>
+
+      <Search id="search">
+        <PiMagnifyingGlassThin />
+        <input type="text" name="" id="" />
+      </Search>
+
       <Recipe>
         <PiReceiptLight />
         <Count>
+          <p>Pedidos (1)</p>
           <p>1</p>
         </Count>
       </Recipe>
+
+      <SignOut>
+        <GoSignOut onClick={handleSignOut} />
+      </SignOut>
     </Container>
   );
 };

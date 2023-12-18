@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { DEVICE_BREAKPOINTS } from "./../../styles/deviceBreakpoints";
 
 export const Container = styled.header`
+  grid-area: header;
   background-color: ${({ theme }) => theme.DARK_700};
 
   padding: 6.4rem 2.8rem 3.2rem;
@@ -9,11 +10,31 @@ export const Container = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 3.2rem;
 
   > a {
     img {
       height: 2.4rem;
     }
+  }
+
+  #search {
+    margin-top: -1.8rem;
+    background-color: ${({ theme }) => theme.DARK_900};
+    width: 100%;
+
+    > input {
+      width: 100%;
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+      display: none;
+    }
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+    align-items: center;
+    padding-inline: 12.3rem;
   }
 `;
 
@@ -36,6 +57,19 @@ export const Recipe = styled.button`
   > svg {
     font-size: 2.5rem;
   }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+    margin-top: -1.4rem;
+    background-color: ${({ theme }) => theme.TOMATO};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: max-content;
+    border-radius: 0.5rem;
+    width: 152px;
+    padding: 0.8rem 7rem 0.8rem 3.2rem;
+  }
 `;
 
 export const Count = styled.div`
@@ -48,9 +82,25 @@ export const Count = styled.div`
   top: -3.2rem;
   right: -1.2rem;
 
+  > p:first-child {
+    display: none;
+  }
+
   > p {
     font-size: 0.81rem;
     font-weight: 500;
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+    background: none;
+    position: static;
+    > p:first-child {
+      display: block;
+      width: max-content;
+    }
+    > p:last-child {
+      display: none;
+    }
   }
 `;
 
@@ -126,4 +176,17 @@ export const SideBarItem = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.DARK_1000};
 
   cursor: pointer;
+`;
+
+export const SignOut = styled.div`
+  display: none;
+
+  > svg {
+    font-size: 2.4rem;
+    cursor: pointer;
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+    display: block;
+  }
 `;

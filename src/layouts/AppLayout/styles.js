@@ -20,4 +20,17 @@ export const Container = styled.div`
     "header"
     "content"
     "footer";
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+    grid-template-rows: 7.2rem 1fr max-content;
+
+    grid-template-columns: 100vw;
+
+    margin: 0;
+
+    grid-template-areas:
+      "header"
+      "content"
+      "footer";
+  }
 `;

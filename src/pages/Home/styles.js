@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 export const Container = styled.main`
   padding-top: 4.4rem;
+
+  @media (min-width: 405px) {
+    text-align: center;
+  }
 `;
 
 export const HeaderMain = styled.section`
