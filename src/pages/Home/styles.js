@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.main`
   padding-top: 4.4rem;
@@ -6,10 +7,16 @@ export const Container = styled.main`
   @media (min-width: 405px) {
     text-align: center;
   }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+    align-items: center;
+    padding-inline: 12.3rem;
+  }
 `;
 
 export const HeaderMain = styled.section`
   display: flex;
+  margin-bottom: 6.2rem;
   img {
     position: absolute;
     top: 18.5rem;

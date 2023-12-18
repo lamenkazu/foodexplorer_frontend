@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, HeaderCard, HeaderMain } from "./styles";
+import { DishCard } from "../../components/DishCard";
 import homeHeaderImg from "../../assets/homeHeader.png";
 
 export const Home = () => {
@@ -16,6 +17,8 @@ export const Home = () => {
           <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
         </HeaderCard>
       </HeaderMain>
+
+      <DishCard />
     </Container>
   );
 };
