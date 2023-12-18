@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { DEVICE_BREAKPOINTS } from "./../../styles/deviceBreakpoints";
+import { Link } from "react-router-dom";
+import { Button } from "../Button";
 
 export const Container = styled.header`
   grid-area: header;
@@ -22,6 +24,8 @@ export const Container = styled.header`
     margin-top: -1.8rem;
     background-color: ${({ theme }) => theme.DARK_900};
     width: 100%;
+    height: 4rem;
+    margin-inline: 0;
 
     > input {
       width: 100%;
@@ -35,6 +39,46 @@ export const Container = styled.header`
   @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
     align-items: center;
     padding-inline: 12.3rem;
+  }
+`;
+
+export const Empty = styled.div`
+  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+    display: none;
+  }
+`;
+
+export const StyledButton = styled(Button)`
+  display: none;
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+    display: flex;
+
+    margin-top: -1.4rem;
+
+    height: max-content;
+    max-width: 20.2rem;
+    padding: 0.8rem 3.2rem;
+    > p {
+      width: max-content;
+    }
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-end;
+  > p {
+    color: ${({ theme }) => theme.BLUE_200};
+    font-size: 1.2rem;
+    line-height: 160%; /* 19.2px */
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+    flex-direction: column;
+    gap: 0;
   }
 `;
 
@@ -64,6 +108,7 @@ export const Recipe = styled.button`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.8rem;
 
     height: max-content;
     border-radius: 0.5rem;

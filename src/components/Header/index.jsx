@@ -13,7 +13,11 @@ import {
   SideBarItem,
   Search,
   SignOut,
+  StyledButton,
+  StyledLink,
+  Empty,
 } from "./styles";
+
 import { Button } from "../Button";
 
 import brandImg from "../../assets/Brand.png";
@@ -22,10 +26,11 @@ import { PiReceiptLight } from "react-icons/pi";
 import { IoCloseOutline } from "react-icons/io5";
 import { PiMagnifyingGlassThin } from "react-icons/pi";
 import { GoSignOut } from "react-icons/go";
+import { USER_ROLE } from "./../../utils/roles";
 
 export const Header = () => {
   const navigate = useNavigate();
-  const { signOut } = useAuth();
+  const { user, signOut } = useAuth();
   const [sideBar, setSideBar] = useState(false);
   const handleSideBar = () => setSideBar(!sideBar);
 
@@ -50,6 +55,9 @@ export const Header = () => {
               <PiMagnifyingGlassThin />
               <input type="text" name="" id="" />
             </Search>
+            {[USER_ROLE.ADMIN].includes(user.role) && (
+              <SideBarItem>Novo prato</SideBarItem>
+            )}
             <SideBarItem onClick={handleSignOut}>Sair</SideBarItem>
           </Content>
         </SideBar>
@@ -59,22 +67,29 @@ export const Header = () => {
         <IoMenu onClick={handleSideBar} />
       </Menu>
 
-      <Link to="/">
+      <StyledLink to="/">
         <img src={brandImg} alt="Logo Food Explorer" />
-      </Link>
+        <p>admin</p>
+      </StyledLink>
 
       <Search id="search">
         <PiMagnifyingGlassThin />
         <input type="text" name="" id="" />
       </Search>
 
-      <Recipe>
-        <PiReceiptLight />
-        <Count>
-          <p>Pedidos (1)</p>
-          <p>1</p>
-        </Count>
-      </Recipe>
+      {![USER_ROLE.ADMIN].includes(user.role) ? (
+        <Recipe>
+          <PiReceiptLight />
+          <Count>
+            <p>Pedidos (1)</p>
+            <p>1</p>
+          </Count>
+        </Recipe>
+      ) : (
+        <Empty />
+      )}
+
+      <StyledButton title="Novo produto" />
 
       <SignOut>
         <GoSignOut onClick={handleSignOut} />
