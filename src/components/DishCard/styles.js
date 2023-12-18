@@ -8,6 +8,8 @@ export const Container = styled.div`
   align-items: center;
   gap: 1.2rem;
 
+  border-radius: 0.8rem;
+
   padding: 2.4rem;
 
   background-color: ${({ theme }) => theme.DARK_300};
