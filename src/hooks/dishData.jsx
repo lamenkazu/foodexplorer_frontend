@@ -36,7 +36,7 @@ const DishDataProvider = ({ children }) => {
   }, []);
 
   return (
-    <DishDataContext.Provider value={{ getAllDishes, allDishesData }}>
+    <DishDataContext.Provider value={{ allDishesData }}>
       {children}
     </DishDataContext.Provider>
   );

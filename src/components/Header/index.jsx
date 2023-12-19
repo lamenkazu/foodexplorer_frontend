@@ -65,7 +65,7 @@ export const Header = () => {
 
       <StyledLink to="/">
         <img src={brandImg} alt="Logo Food Explorer" />
-        <p>admin</p>
+        {[USER_ROLE.ADMIN].includes(user.role) && <p>admin</p>}
       </StyledLink>
 
       <Search id="search">
@@ -88,7 +88,7 @@ export const Header = () => {
         <StyledButton title="Novo produto" />
       )}
 
-      <Empty />
+      {[USER_ROLE.ADMIN].includes(user.role) && <Empty />}
 
       <SignOut>
         <GoSignOut onClick={handleSignOut} />
