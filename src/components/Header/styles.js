@@ -21,7 +21,7 @@ export const Container = styled.header`
   }
 
   #search {
-    margin-top: -1.8rem;
+    margin-top: -1.4rem;
     background-color: ${({ theme }) => theme.DARK_900};
     width: 100%;
     height: 4rem;

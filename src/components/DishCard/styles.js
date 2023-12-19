@@ -10,7 +10,7 @@ export const Container = styled.div`
 
   border-radius: 0.8rem;
 
-  padding: 2.4rem;
+  padding: 1.6rem 2.4rem 2.4rem;
 
   background-color: ${({ theme }) => theme.DARK_300};
 
@@ -19,6 +19,10 @@ export const Container = styled.div`
     align-self: flex-end;
     font-size: 2.6rem;
   }
+`;
+
+export const Empty = styled.div`
+  display: none;
 `;
 
 export const P = styled.p`
@@ -37,6 +41,8 @@ export const Span = styled.span`
 `;
 
 export const Cover = styled.img`
+  margin-top: 3rem;
+
   width: 8.8rem;
 `;
 

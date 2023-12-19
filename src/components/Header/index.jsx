@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
 
 import {
@@ -18,13 +18,9 @@ import {
   Empty,
 } from "./styles";
 
-import { Button } from "../Button";
-
 import brandImg from "../../assets/Brand.png";
-import { IoMenu } from "react-icons/io5";
-import { PiReceiptLight } from "react-icons/pi";
-import { IoCloseOutline } from "react-icons/io5";
-import { PiMagnifyingGlassThin } from "react-icons/pi";
+import { IoMenu, IoCloseOutline } from "react-icons/io5";
+import { PiReceiptLight, PiMagnifyingGlassThin } from "react-icons/pi";
 import { GoSignOut } from "react-icons/go";
 import { USER_ROLE } from "./../../utils/roles";
 
@@ -78,18 +74,21 @@ export const Header = () => {
       </Search>
 
       {![USER_ROLE.ADMIN].includes(user.role) ? (
-        <Recipe>
-          <PiReceiptLight />
-          <Count>
-            <p>Pedidos (1)</p>
-            <p>1</p>
-          </Count>
-        </Recipe>
+        <>
+          {" "}
+          <Recipe>
+            <PiReceiptLight />
+            <Count>
+              <p>Pedidos (1)</p>
+              <p>1</p>
+            </Count>
+          </Recipe>
+        </>
       ) : (
-        <Empty />
+        <StyledButton title="Novo produto" />
       )}
 
-      <StyledButton title="Novo produto" />
+      <Empty />
 
       <SignOut>
         <GoSignOut onClick={handleSignOut} />

@@ -13,19 +13,17 @@ const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
   const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const signIn = useCallback(async ({ email, password }) => {
     try {
-      const response = await api.post(
-        "/Sessions",
-        { email, password },
-        { withCredentials: true }
-      );
+      const response = await api.post("/Sessions", { email, password });
       const { user } = response.data;
 
       localStorage.setItem("@food_explorer:user", JSON.stringify(user));
 
       setData({ user });
+      setLoading(false);
     } catch (err) {
       if (err.response) {
         alert(err.response.data.message);
@@ -56,16 +54,6 @@ const AuthProvider = ({ children }) => {
     setData({});
   });
 
-  const authValue = useMemo(
-    () => ({
-      signIn,
-      signUp,
-      signOut,
-      user: data.user,
-    }),
-    [signIn, signUp, signOut, data.user]
-  );
-
   useEffect(() => {
     const user = localStorage.getItem("@food_explorer:user");
 
@@ -74,7 +62,18 @@ const AuthProvider = ({ children }) => {
         user: JSON.parse(user),
       });
     }
+    setLoading(false);
   }, []);
+
+  const authValue = useMemo(
+    () => ({
+      signIn,
+      signUp,
+      signOut,
+      user: data.user,
+    }),
+    [signIn, signUp, signOut, data.user, loading]
+  );
 
   return (
     <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>
