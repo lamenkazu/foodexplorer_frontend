@@ -4,7 +4,7 @@ import { Button } from "../Button";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: max-content;
+  width: 18.4rem;
   align-items: center;
   gap: 1.2rem;
 
@@ -44,6 +44,8 @@ export const Cover = styled.img`
   margin-top: 3rem;
 
   width: 8.8rem;
+  height: 8.8rem;
+  border-radius: 50%;
 `;
 
 export const Stepper = styled.div`

@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuth } from "../../hooks/auth";
+import { useDishData } from "../../hooks/dishData";
+
 import {
   Container,
   Cover,
@@ -13,13 +16,14 @@ import { CiHeart } from "react-icons/ci";
 import { BsPlusLg } from "react-icons/bs";
 import { FiMinus } from "react-icons/fi";
 import { PiPencilSimpleLight } from "react-icons/pi";
-
 import coverImg from "../../assets/Mask group.png";
-import { USER_ROLE } from "../../utils/roles";
-import { useAuth } from "../../hooks/auth";
 
-export const DishCard = () => {
+import { USER_ROLE } from "../../utils/roles";
+import { api } from "../../services/api";
+
+export const DishCard = ({ data }) => {
   const { user } = useAuth();
+  const { getDishImage } = useDishData();
   const [stepper, setStepper] = useState(0);
 
   const addOnStepper = () => {
@@ -30,6 +34,8 @@ export const DishCard = () => {
     setStepper(stepper - 1);
   };
 
+  const dishImg = getDishImage(data.image);
+
   return (
     <Container>
       {![USER_ROLE.ADMIN].includes(user.role) ? (
@@ -38,9 +44,9 @@ export const DishCard = () => {
         <PiPencilSimpleLight />
       )}
 
-      <Cover src={coverImg} alt="Imagem do alimento" />
-      <P>Salada Ravanello &gt;</P>
-      <Span>R$ 49,97</Span>
+      <Cover src={dishImg} alt="Imagem do alimento" />
+      <P>{data.title} &gt;</P>
+      <Span>R$ {data.price} </Span>
 
       {![USER_ROLE.ADMIN].includes(user.role) ? (
         <>

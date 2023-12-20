@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, HeaderCard, HeaderMain } from "./styles";
 import { DishCard } from "../../components/DishCard";
 import { Section } from "../../components/Section";
@@ -7,7 +7,7 @@ import homeHeaderImg from "../../assets/homeHeader.png";
 import { useDishData } from "../../hooks/dishData";
 
 export const Home = () => {
-  const { allDishesData } = useDishData();
+  const { categories } = useDishData();
 
   return (
     <Container>
@@ -23,10 +23,8 @@ export const Home = () => {
         </HeaderCard>
       </HeaderMain>
 
-      {allDishesData.map((dish) => (
-        <Section key={dish.dish_id} title={dish.category}>
-          <DishCard />
-        </Section>
+      {categories?.map((dish) => (
+        <Section key={dish.dish_id} title={dish.category}></Section>
       ))}
     </Container>
   );
