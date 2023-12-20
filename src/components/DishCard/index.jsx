@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
 import { useAuth } from "../../hooks/auth";
 import { useDishData } from "../../hooks/dishData";
 
@@ -10,16 +11,15 @@ import {
   P,
   Span,
   Empty,
+  StyledLink,
 } from "./styles";
 
 import { CiHeart } from "react-icons/ci";
 import { BsPlusLg } from "react-icons/bs";
 import { FiMinus } from "react-icons/fi";
 import { PiPencilSimpleLight } from "react-icons/pi";
-import coverImg from "../../assets/Mask group.png";
 
 import { USER_ROLE } from "../../utils/roles";
-import { api } from "../../services/api";
 
 export const DishCard = ({ data }) => {
   const { user } = useAuth();
@@ -44,9 +44,11 @@ export const DishCard = ({ data }) => {
         <PiPencilSimpleLight />
       )}
 
-      <Cover src={dishImg} alt="Imagem do alimento" />
-      <P>{data.title} &gt;</P>
-      <Span>R$ {data.price} </Span>
+      <StyledLink to={`/view/${data.dish_id}`}>
+        <Cover src={dishImg} alt="Imagem do alimento" />
+        <P>{data.title} &gt;</P>
+        <Span>R$ {data.price} </Span>
+      </StyledLink>
 
       {![USER_ROLE.ADMIN].includes(user.role) ? (
         <>

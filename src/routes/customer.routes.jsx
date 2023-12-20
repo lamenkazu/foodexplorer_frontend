@@ -11,7 +11,7 @@ export function CustomerRoutes() {
     <Routes>
       <Route path="/" element={<AppLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/view" element={<ViewDish />} />
+        <Route path="/view/:dish_id" element={<ViewDish />} />
       </Route>
 
       <Route path="*" exact={true} element={<NotFound />} />

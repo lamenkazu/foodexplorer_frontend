@@ -13,7 +13,7 @@ export function AdminRoutes() {
     <Routes>
       <Route path="/" element={<AppLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/view" element={<ViewDish />} />
+        <Route path="/view/:dish_id" element={<ViewDish />} />
         <Route path="/new" element={<NewDish />} />
         <Route path="/edit" element={<EditDish />} />
       </Route>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Button } from "../Button";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   display: flex;
@@ -19,6 +20,13 @@ export const Container = styled.div`
     align-self: flex-end;
     font-size: 2.6rem;
   }
+`;
+
+export const StyledLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
 `;
 
 export const Empty = styled.div`

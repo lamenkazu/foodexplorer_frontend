@@ -4,6 +4,7 @@ import {
   createContext,
   useCallback,
   useEffect,
+  useMemo,
 } from "react";
 import { api } from "../services/api";
 
@@ -74,10 +75,17 @@ const DishDataProvider = ({ children }) => {
     getDishesCategories();
   }, []);
 
+  const dishDataValue = useMemo(
+    () => ({
+      getDishesByCategory,
+      categories,
+      getDishImage,
+    }),
+    [getDishImage, categories, getDishesByCategory]
+  );
+
   return (
-    <DishDataContext.Provider
-      value={{ getDishesByCategory, categories, getDishImage }}
-    >
+    <DishDataContext.Provider value={dishDataValue}>
       {children}
     </DishDataContext.Provider>
   );

@@ -19,10 +19,9 @@ export const Section = ({ title }) => {
   }, []);
   return (
     <Container>
-      {console.log(data)}
       <h3>{title}</h3>
       {data?.map((dish) => (
-        <DishCard data={dish} />
+        <DishCard key={dish.dish_id} data={dish} />
       ))}
     </Container>
   );
