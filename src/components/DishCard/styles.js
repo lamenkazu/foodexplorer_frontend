@@ -56,20 +56,6 @@ export const Cover = styled.img`
   border-radius: 50%;
 `;
 
-export const Stepper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.4rem;
-
-  > p {
-    color: ${({ theme }) => theme.LIGHT_300};
-  }
-
-  > svg {
-    color: ${({ theme }) => theme.LIGHT_100};
-  }
-`;
-
 export const StyledButton = styled(Button)`
   height: 3.2rem;
   padding: 1.2rem 2.4rem;

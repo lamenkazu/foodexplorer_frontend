@@ -71,6 +71,22 @@ const DishDataProvider = ({ children }) => {
     }
   });
 
+  const getDishById = useCallback(async (id) => {
+    try {
+      if (loading) return;
+
+      const response = await api.get(`/Dishes/${id}`);
+
+      return response.data;
+    } catch (err) {
+      if (err.response) {
+        alert(err.response.data.message);
+      } else {
+        alert("Não foi possível acessar os dados desse prato.");
+      }
+    }
+  });
+
   useEffect(() => {
     getDishesCategories();
   }, []);
@@ -80,8 +96,9 @@ const DishDataProvider = ({ children }) => {
       getDishesByCategory,
       categories,
       getDishImage,
+      getDishById,
     }),
-    [getDishImage, categories, getDishesByCategory]
+    [getDishImage, categories, getDishesByCategory, getDishById]
   );
 
   return (

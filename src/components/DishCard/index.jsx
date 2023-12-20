@@ -6,17 +6,15 @@ import { useDishData } from "../../hooks/dishData";
 import {
   Container,
   Cover,
-  Stepper,
   StyledButton,
   P,
   Span,
   Empty,
   StyledLink,
 } from "./styles";
+import { Stepper } from "../Stepper";
 
 import { CiHeart } from "react-icons/ci";
-import { BsPlusLg } from "react-icons/bs";
-import { FiMinus } from "react-icons/fi";
 import { PiPencilSimpleLight } from "react-icons/pi";
 
 import { USER_ROLE } from "../../utils/roles";
@@ -24,15 +22,6 @@ import { USER_ROLE } from "../../utils/roles";
 export const DishCard = ({ data }) => {
   const { user } = useAuth();
   const { getDishImage } = useDishData();
-  const [stepper, setStepper] = useState(0);
-
-  const addOnStepper = () => {
-    setStepper(stepper + 1);
-  };
-  const removeFromStepper = () => {
-    if (stepper === 0) return;
-    setStepper(stepper - 1);
-  };
 
   const dishImg = getDishImage(data.image);
 
@@ -52,11 +41,7 @@ export const DishCard = ({ data }) => {
 
       {![USER_ROLE.ADMIN].includes(user.role) ? (
         <>
-          <Stepper>
-            <FiMinus onClick={removeFromStepper} />
-            <p>{stepper}</p>
-            <BsPlusLg onClick={addOnStepper} />
-          </Stepper>
+          <Stepper />
           <StyledButton title="Incluir" />
         </>
       ) : (
