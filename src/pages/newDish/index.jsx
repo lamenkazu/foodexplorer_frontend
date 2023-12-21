@@ -139,7 +139,7 @@ export const NewDish = () => {
             onChange={handleFormChanges}
             value={form.category}
           >
-            <option value=""></option>
+            <option value="">Selecionar</option>
             <option value="Refeição">Refeição</option>
             <option value="Prato Principal">Prato Principal</option>
             <option value="Bebida">Bebida</option>

@@ -21,7 +21,10 @@ export const Section = ({ title }) => {
     <Container>
       <h3>{title}</h3>
       {data?.map((dish) => (
-        <DishCard key={dish.dish_id} data={dish} />
+        <DishCard
+          key={dish.dish_id}
+          data={{ ...dish, dish_id: dish.dish_id }}
+        />
       ))}
     </Container>
   );

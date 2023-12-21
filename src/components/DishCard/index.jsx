@@ -9,19 +9,26 @@ import { CiHeart } from "react-icons/ci";
 import { PiPencilSimpleLight } from "react-icons/pi";
 
 import { USER_ROLE } from "../../utils/roles";
+import { useNavigate } from "react-router-dom";
 
 export const DishCard = ({ data }) => {
+  const navigate = useNavigate();
+
   const { user } = useAuth();
   const { getDishImage } = useDishData();
 
   const dishImg = getDishImage(data.image);
+
+  const goToEditPage = () => {
+    navigate(`/edit/${data.dish_id}`);
+  };
 
   return (
     <Container>
       {![USER_ROLE.ADMIN].includes(user.role) ? (
         <CiHeart />
       ) : (
-        <PiPencilSimpleLight />
+        <PiPencilSimpleLight onClick={goToEditPage} />
       )}
 
       <StyledLink to={`/view/${data.dish_id}`}>

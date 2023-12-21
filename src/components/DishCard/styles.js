@@ -19,6 +19,7 @@ export const Container = styled.div`
     position: absolute;
     align-self: flex-end;
     font-size: 2.6rem;
+    cursor: pointer;
   }
 `;
 

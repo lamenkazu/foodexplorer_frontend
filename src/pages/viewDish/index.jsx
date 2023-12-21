@@ -36,6 +36,10 @@ export const ViewDish = () => {
     navigate(-1);
   };
 
+  const goToEditPage = () => {
+    navigate(`/edit/${dish_id}`);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await getDishById(dish_id);
@@ -81,7 +85,7 @@ export const ViewDish = () => {
               />
             </CustomerOrder>
           ) : (
-            <StyledButton title={`Editar Prato`} />
+            <StyledButton title={`Editar Prato`} onClick={goToEditPage} />
           )}
         </>
       ) : (

@@ -37,6 +37,10 @@ const DishDataProvider = ({ children }) => {
     }
   });
 
+  const updateDish = useCallback(async (dish, dishFile) => {
+    console.log(dish, dishFile);
+  });
+
   const getDishesCategories = useCallback(async () => {
     try {
       if (loading) return;
@@ -118,8 +122,16 @@ const DishDataProvider = ({ children }) => {
       getDishImage,
       getDishById,
       createNewDish,
+      updateDish,
     }),
-    [getDishImage, categories, getDishesByCategory, getDishById, createNewDish]
+    [
+      getDishImage,
+      categories,
+      getDishesByCategory,
+      getDishById,
+      createNewDish,
+      updateDish,
+    ]
   );
 
   return (
