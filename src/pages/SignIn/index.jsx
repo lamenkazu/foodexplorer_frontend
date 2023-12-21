@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
 
-import { Container } from "./styles";
+import { Container, InputWrapper } from "./styles";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { StyledLink } from "../../components/StyledLink";
@@ -26,22 +26,24 @@ export const SignIn = () => {
 
   return (
     <Container>
-      <Input
-        id="email"
-        name="email"
-        lbl="Email"
-        type="email"
-        placeholder="Exemplo: exemplo@mail.com"
-        onChange={handleFormChanges}
-      />
-      <Input
-        id="password"
-        name="password"
-        lbl="Senha"
-        type="password"
-        placeholder="No mínimo 6 caracteres"
-        onChange={handleFormChanges}
-      />
+      <InputWrapper>
+        <Input
+          id="email"
+          name="email"
+          lbl="Email"
+          type="email"
+          placeholder="Exemplo: exemplo@mail.com"
+          onChange={handleFormChanges}
+        />
+        <Input
+          id="password"
+          name="password"
+          lbl="Senha"
+          type="password"
+          placeholder="No mínimo 6 caracteres"
+          onChange={handleFormChanges}
+        />
+      </InputWrapper>
       <Button title="Entrar" onClick={handleSignIn} />
       <StyledLink to="/register" title="Criar uma conta" />
     </Container>
