@@ -46,7 +46,8 @@ export const NewDish = () => {
       description,
     };
 
-    await createNewDish(newDish, dishFile);
+    if (confirm("Confirma que os dados estão corretos para salvar?"))
+      await createNewDish(newDish, dishFile);
   };
 
   const handleFormChanges = (e) => {
