@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDishData } from "../../hooks/dishData";
 
 import {
   Container,
@@ -17,6 +18,8 @@ import { Marker } from "../../components/Marker";
 import { PiCaretLeft, PiUploadSimple } from "react-icons/pi";
 
 export const NewDish = () => {
+  const { createNewDish } = useDishData();
+
   const [form, setForm] = useState({
     dishFile: null,
     title: "",
@@ -27,17 +30,23 @@ export const NewDish = () => {
     newIngredient: "",
   });
 
+  const { title, category, price, description, ingredients, dishFile } = form;
+
   // Verifica se algum campo obrigatório está vazio
-  const isFormEmpty = () => {
-    const { title, category, price, ingredients, dishFile } = form;
+  const isFormEmpty = () =>
+    !title || !category || !price || ingredients.length === 0 || !dishFile;
 
-    return (
-      !title || !category || !price || ingredients.length === 0 || !dishFile
-    );
-  };
+  //Pede para salvar um novo prato no banco de dados.
+  const handleSaveDish = async () => {
+    const newDish = {
+      title,
+      category,
+      price,
+      ingredients,
+      description,
+    };
 
-  const handleSaveDish = () => {
-    console.log(form);
+    await createNewDish(newDish, dishFile);
   };
 
   const handleFormChanges = (e) => {
@@ -85,6 +94,9 @@ export const NewDish = () => {
   return (
     <Container>
       <InputWrapper>
+        {
+          //GoBack -> Botão para voltar para a página anterior
+        }
         <GoBack onClick={handleGoBack}>
           <PiCaretLeft size={22} />
           <p>voltar</p>
@@ -92,6 +104,9 @@ export const NewDish = () => {
 
         <h1>Novo Prato</h1>
 
+        {
+          //InputFileWrapper -> Input do arquivo da imagem
+        }
         <InputFileWrapper>
           <label htmlFor="fileImageLBL">Imagem do prato</label>
 
@@ -113,6 +128,9 @@ export const NewDish = () => {
           onChange={handleFormChanges}
         />
 
+        {
+          //SelectWrapper -> Input Select de Categoria
+        }
         <SelectWrapper>
           <label htmlFor="category">Categoria</label>
           <Select
@@ -128,6 +146,9 @@ export const NewDish = () => {
           </Select>
         </SelectWrapper>
 
+        {
+          //MarkerWrapper -> Input de tags de ingredientes
+        }
         <MarkerWrapper>
           <label htmlFor="ingredients">Ingredientes</label>
 
@@ -165,6 +186,9 @@ export const NewDish = () => {
           onChange={handleFormChanges}
         />
 
+        {
+          //TextareaWrapper -> Input da descrição do prato
+        }
         <TextareaWrapper>
           <label htmlFor="description">Descrição</label>
           <textarea
@@ -175,6 +199,9 @@ export const NewDish = () => {
           ></textarea>
         </TextareaWrapper>
 
+        {
+          //Botão para salvar prato no banco de dados
+        }
         <Button
           loading={isFormEmpty()}
           title="Salvar alterações"

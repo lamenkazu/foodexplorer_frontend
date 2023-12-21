@@ -17,6 +17,26 @@ const DishDataProvider = ({ children }) => {
   const { loading } = useAuth();
   const [categories, setCategories] = useState([]);
 
+  const createNewDish = useCallback(async (newDish, newDishFile) => {
+    try {
+      if (loading) return;
+
+      const formData = new FormData();
+      formData.append("dish", JSON.stringify(newDish));
+      formData.append("image", newDishFile);
+
+      return await api
+        .post("/Dishes", formData)
+        .then((message) => alert(message));
+    } catch (err) {
+      if (err.response) {
+        alert(err.response.data.message);
+      } else {
+        alert("Não foi possível criar um novo prato no banco de dados.");
+      }
+    }
+  });
+
   const getDishesCategories = useCallback(async () => {
     try {
       if (loading) return;
@@ -97,8 +117,9 @@ const DishDataProvider = ({ children }) => {
       categories,
       getDishImage,
       getDishById,
+      createNewDish,
     }),
-    [getDishImage, categories, getDishesByCategory, getDishById]
+    [getDishImage, categories, getDishesByCategory, getDishById, createNewDish]
   );
 
   return (
