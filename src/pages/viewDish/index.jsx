@@ -8,15 +8,16 @@ import { USER_ROLE } from "../../utils/roles";
 
 import {
   Container,
-  GoBack,
   Cover,
   CustomerOrder,
   StyledButton,
+  StyledGoBack,
   ContentDetails,
   IngredientTags,
 } from "./styles";
 import { Stepper } from "./../../components/Stepper";
 import { Empty } from "../../components/Empty";
+import { GoBack } from "../../components/GoBack";
 
 import { PiCaretLeft, PiReceiptLight } from "react-icons/pi";
 import { IngredientTag } from "../../components/IngredientTag";
@@ -50,10 +51,10 @@ export const ViewDish = () => {
     <Container>
       {loading ? (
         <>
-          <GoBack onClick={handleGoBack}>
+          <StyledGoBack onClick={handleGoBack}>
             <PiCaretLeft size={32} />
             <p>voltar</p>
-          </GoBack>
+          </StyledGoBack>
 
           <Cover src={dishImg} alt="" />
 
