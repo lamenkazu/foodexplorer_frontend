@@ -6,6 +6,43 @@ export const Container = styled.div`
   padding: 1rem 3.2rem 5.2rem;
 `;
 
+export const InputFileWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+
+  > label:first-child {
+    margin-bottom: 0.8rem;
+    color: ${({ theme }) => theme.LIGHT_400};
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 16px */
+  }
+
+  > label:last-child {
+    display: flex;
+    align-items: center;
+    gap: 2.4rem;
+
+    background-color: ${({ theme }) => theme.DARK_800};
+
+    padding: 1.2rem 3.2rem;
+    border-radius: 0.8rem;
+
+    cursor: pointer;
+
+    input {
+      display: none;
+    }
+
+    label {
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px; /* 171.429% */
+    }
+  }
+`;
 export const InputWrapper = styled.section`
   display: flex;
   flex-direction: column;
@@ -32,6 +69,11 @@ export const Select = styled.select`
 
   width: 100%;
 
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1_54)'%3E%3Cpath d='M8 10L16 18L24 10' stroke='%239C98A6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1_54'%3E%3Crect width='32' height='32' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-position: right 1.6rem top 60%;
+
   > option {
     min-width: 10rem;
   }
@@ -40,7 +82,7 @@ export const Select = styled.select`
 export const SelectWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 0.8rem;
 
   > label {
     color: ${({ theme }) => theme.LIGHT_400};
@@ -54,7 +96,7 @@ export const SelectWrapper = styled.div`
 export const MarkerWrapper = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 0.8rem;
 
   border-radius: 0.8rem;
 
@@ -80,7 +122,7 @@ export const MarkerWrapper = styled.section`
 export const TextareaWrapper = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 0.8rem;
 
   > textarea {
     background-color: ${({ theme }) => theme.DARK_800};

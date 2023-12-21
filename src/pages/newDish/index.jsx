@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import {
   Container,
+  InputFileWrapper,
   InputWrapper,
   SelectWrapper,
   Select,
@@ -11,13 +12,19 @@ import {
 import { Input } from "../../components/Input";
 import { GoBack } from "../../components/GoBack";
 import { Button } from "../../components/Button";
-
-import { PiCaretLeft } from "react-icons/pi";
 import { Marker } from "../../components/Marker";
+
+import { PiCaretLeft, PiUploadSimple } from "react-icons/pi";
 
 export const NewDish = () => {
   const [tags, setTags] = useState([]);
   const [newTag, setNewTag] = useState("");
+  const [dishFile, setDishFile] = useState(null);
+
+  const handleDishImage = (event) => {
+    const file = event.target.files[0];
+    setDishFile(file);
+  };
 
   const handleAddMarker = () => {
     if (newTag === "") return;
@@ -43,15 +50,33 @@ export const NewDish = () => {
 
         <h1>Novo Prato</h1>
 
-        <Input lbl="Imagem do prato" id="fileImage" type="file" />
+        <InputFileWrapper>
+          <label htmlFor="fileImage">Imagem do prato</label>
+
+          <label htmlFor="fileImage">
+            <PiUploadSimple size={32} />
+
+            <input
+              lbl="Imagem do prato"
+              id="fileImage"
+              type="file"
+              onChange={handleDishImage}
+            />
+            <label htmlFor="fileImage">
+              {dishFile ? dishFile.name : "Selecione imagem"}
+            </label>
+          </label>
+        </InputFileWrapper>
+
         <Input lbl="Nome" id="name" placeholder="Ex.: Salada Ceasar" />
 
         <SelectWrapper>
           <label htmlFor="category">Categoria</label>
           <Select id="category">
-            <option value="">Refeição</option>
-            <option value="">Prato Principal</option>
-            <option value="">Bebida</option>
+            <option value=""></option>
+            <option value="Refeição">Refeição</option>
+            <option value="Prato Principal">Prato Principal</option>
+            <option value="Bebida">Bebida</option>
           </Select>
         </SelectWrapper>
 
@@ -75,6 +100,11 @@ export const NewDish = () => {
               value={newTag}
               onChange={(e) => setNewTag(e.target.value)}
               onClick={handleAddMarker}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  handleAddMarker();
+                }
+              }}
             />
           </div>
         </MarkerWrapper>
