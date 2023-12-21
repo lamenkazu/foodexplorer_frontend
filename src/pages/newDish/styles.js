@@ -11,8 +11,10 @@ export const InputWrapper = styled.section`
   flex-direction: column;
   gap: 2.4rem;
 
-  input {
-    background-color: ${({ theme }) => theme.DARK_800};
+  > div {
+    input {
+      background-color: ${({ theme }) => theme.DARK_800};
+    }
   }
 `;
 
@@ -27,6 +29,12 @@ export const Select = styled.select`
   font-style: normal;
   font-weight: 400;
   line-height: 160%; /* 22.4px */
+
+  width: 100%;
+
+  > option {
+    min-width: 10rem;
+  }
 `;
 
 export const SelectWrapper = styled.div`
@@ -40,5 +48,47 @@ export const SelectWrapper = styled.div`
     font-style: normal;
     font-weight: 400;
     line-height: 100%; /* 16px */
+  }
+`;
+
+export const MarkerWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  border-radius: 0.8rem;
+
+  > label {
+    color: ${({ theme }) => theme.LIGHT_400};
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 16px */
+  }
+
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    border-radius: 0.8rem;
+
+    padding: 0.8rem;
+    background-color: ${({ theme }) => theme.DARK_800};
+  }
+`;
+
+export const TextareaWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  > textarea {
+    background-color: ${({ theme }) => theme.DARK_800};
+    border: none;
+    resize: none;
+    border-radius: 0.8rem;
+    padding: 1.4rem;
+
+    height: 17.2rem;
   }
 `;

@@ -27,6 +27,7 @@ export const Container = styled.button`
   gap: 0.8rem;
 
   &:disabled {
-    opacity: 0.5;
+    opacity: 0.8;
+    background-color: ${({ theme }) => theme.TOMATO_DISABLE};
   }
 `;

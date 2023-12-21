@@ -12,9 +12,11 @@ export const defaultTheme = {
   LIGHT_300: "#E1E1E6",
   LIGHT_400: "#C4C4CC",
   LIGHT_500: "#7C7C8A",
+  LIGHT_600: "#76797B",
   LIGHT_700: "#4D585E",
 
   BLUE_100: "#065E7C",
   BLUE_200: "#82F3FF",
   TOMATO: "#750310",
+  TOMATO_DISABLE: "#AB4d55",
 };
