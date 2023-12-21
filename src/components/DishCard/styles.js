@@ -57,6 +57,6 @@ export const Cover = styled.img`
 `;
 
 export const StyledButton = styled(Button)`
-  height: 3.2rem;
+  height: 3rem;
   padding: 1.2rem 2.4rem;
 `;

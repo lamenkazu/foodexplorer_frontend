@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
 
-import { Container } from "./styles";
+import { Container, InputWrapper } from "./styles";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { StyledLink } from "../../components/StyledLink";
@@ -31,30 +31,32 @@ export const SignUp = () => {
 
   return (
     <Container>
-      <Input
-        id="name"
-        name="name"
-        lbl="Nome"
-        type="text"
-        placeholder="Exemplo: Maria da Silva"
-        onChange={handleFormChanges}
-      />
-      <Input
-        id="email"
-        name="email"
-        lbl="Email"
-        type="email"
-        placeholder="Exemplo: exemplo@mail.com"
-        onChange={handleFormChanges}
-      />
-      <Input
-        id="password"
-        name="password"
-        lbl="Senha"
-        type="password"
-        placeholder="No mínimo 6 caracteres"
-        onChange={handleFormChanges}
-      />
+      <InputWrapper>
+        <Input
+          id="name"
+          name="name"
+          lbl="Nome"
+          type="text"
+          placeholder="Exemplo: Maria da Silva"
+          onChange={handleFormChanges}
+        />
+        <Input
+          id="email"
+          name="email"
+          lbl="Email"
+          type="email"
+          placeholder="Exemplo: exemplo@mail.com"
+          onChange={handleFormChanges}
+        />
+        <Input
+          id="password"
+          name="password"
+          lbl="Senha"
+          type="password"
+          placeholder="No mínimo 6 caracteres"
+          onChange={handleFormChanges}
+        />
+      </InputWrapper>
       <Button title="Criar conta" onClick={handleSignIn} />
       <StyledLink to="/" title="Já tenho uma conta" />
     </Container>
