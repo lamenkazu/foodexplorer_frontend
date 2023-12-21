@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.button`
   width: 100%;
-  background-color: ${({ theme }) => theme.TOMATO};
+  background-color: ${({ theme, $contra }) =>
+    $contra ? theme.DARK_800 : theme.TOMATO};
 
   display: flex;
   justify-content: center;

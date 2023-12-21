@@ -10,6 +10,7 @@ import {
   Select,
   MarkerWrapper,
   TextareaWrapper,
+  ButtonsWrapper,
 } from "./styles";
 import { Input } from "../../components/Input";
 import { GoBack } from "../../components/GoBack";
@@ -22,8 +23,8 @@ export const EditDish = () => {
   const { dish_id } = useParams();
   const navigate = useNavigate();
   const { getDishById, updateDish } = useDishData();
-  const [loading, setLoading] = useState(false);
 
+  //Estado do formulário.
   const [form, setForm] = useState({
     dishFile: null,
     title: "",
@@ -33,33 +34,18 @@ export const EditDish = () => {
     ingredients: [],
     newIngredient: "",
   });
-
   const { title, category, price, description, ingredients, dishFile } = form;
 
-  // Verifica se algum campo obrigatório está vazio
+  // Verifica se algum campo obrigatório está vazio.
   const isFormEmpty = () =>
     !title || !category || !price || ingredients.length === 0;
 
-  //Pede para salvar um novo prato no banco de dados.
-  const handleSaveDish = async () => {
-    const newDish = {
-      dish_id,
-      title,
-      category,
-      price,
-      ingredients,
-      description,
-    };
-
-    await updateDish(newDish, dishFile).then(() => {
-      navigate("/");
-    });
-  };
-
+  //Lida com as mudanças no formulario.
   const handleFormChanges = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  //Lida com o recebimento do arquivo de imagem.
   const handleDishImage = (event) => {
     const file = event.target.files[0];
 
@@ -78,6 +64,7 @@ export const EditDish = () => {
     }
   };
 
+  //Adiciona um novo ingrediente à lista.
   const handleAddMarker = () => {
     if (form.newIngredient === "") return;
     setForm({
@@ -87,6 +74,7 @@ export const EditDish = () => {
     });
   };
 
+  //Remove um ingrediente da lista.
   const handleRemoveMarker = (deleted) => {
     setForm({
       ...form,
@@ -94,10 +82,31 @@ export const EditDish = () => {
     });
   };
 
+  //Lida com o retorno à pagina anterior.
   const handleGoBack = () => {
     navigate(-1);
   };
 
+  //Pede para salvar os novos dados prato no banco de dados.
+  const handleUpdateDish = async () => {
+    const newDish = {
+      dish_id,
+      title,
+      category,
+      price,
+      ingredients,
+      description,
+    };
+
+    await updateDish(newDish, dishFile).then(() => {
+      navigate("/");
+    });
+  };
+
+  //Pede para deletar o prato do banco de dados.
+  const handleDeleteDish = () => {};
+
+  //Busca os dados do prato para adicionar aos inputs.
   useEffect(() => {
     const fetchData = async () => {
       const response = await getDishById(dish_id);
@@ -109,7 +118,6 @@ export const EditDish = () => {
         ingredients: response?.ingredients,
         newIngredient: "",
       });
-      setLoading(true);
     };
 
     fetchData();
@@ -118,9 +126,6 @@ export const EditDish = () => {
   return (
     <Container>
       <InputWrapper>
-        {
-          //GoBack -> Botão para voltar para a página anterior
-        }
         <GoBack onClick={handleGoBack}>
           <PiCaretLeft size={22} />
           <p>voltar</p>
@@ -128,9 +133,6 @@ export const EditDish = () => {
 
         <h1>Editar prato</h1>
 
-        {
-          //InputFileWrapper -> Input do arquivo da imagem
-        }
         <InputFileWrapper>
           <label htmlFor="fileImageLBL">Imagem do prato</label>
 
@@ -155,9 +157,6 @@ export const EditDish = () => {
           onChange={handleFormChanges}
         />
 
-        {
-          //SelectWrapper -> Input Select de Categoria
-        }
         <SelectWrapper>
           <label htmlFor="category">Categoria</label>
           <Select
@@ -173,9 +172,6 @@ export const EditDish = () => {
           </Select>
         </SelectWrapper>
 
-        {
-          //MarkerWrapper -> Input de tags de ingredientes
-        }
         <MarkerWrapper>
           <label htmlFor="ingredients">Ingredientes</label>
 
@@ -214,9 +210,6 @@ export const EditDish = () => {
           onChange={handleFormChanges}
         />
 
-        {
-          //TextareaWrapper -> Input da descrição do prato
-        }
         <TextareaWrapper>
           <label htmlFor="description">Descrição</label>
           <textarea
@@ -228,14 +221,14 @@ export const EditDish = () => {
           ></textarea>
         </TextareaWrapper>
 
-        {
-          //Botão para salvar prato no banco de dados
-        }
-        <Button
-          loading={isFormEmpty()}
-          title="Salvar alterações"
-          onClick={handleSaveDish}
-        />
+        <ButtonsWrapper>
+          <Button contra title="Excluir prato" onClick={handleDeleteDish} />
+          <Button
+            loading={isFormEmpty()}
+            title="Salvar alterações"
+            onClick={handleUpdateDish}
+          />
+        </ButtonsWrapper>
       </InputWrapper>
     </Container>
   );

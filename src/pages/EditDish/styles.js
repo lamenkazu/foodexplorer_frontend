@@ -134,3 +134,8 @@ export const TextareaWrapper = styled.section`
     height: 17.2rem;
   }
 `;
+
+export const ButtonsWrapper = styled.section`
+  display: flex;
+  gap: 3.2rem;
+`;
