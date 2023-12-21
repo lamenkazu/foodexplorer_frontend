@@ -22,7 +22,7 @@ import { PiCaretLeft, PiUploadSimple } from "react-icons/pi";
 export const EditDish = () => {
   const { dish_id } = useParams();
   const navigate = useNavigate();
-  const { getDishById, updateDish } = useDishData();
+  const { getDishById, updateDish, deleteDish } = useDishData();
 
   //Estado do formulário.
   const [form, setForm] = useState({
@@ -89,7 +89,7 @@ export const EditDish = () => {
 
   //Pede para salvar os novos dados prato no banco de dados.
   const handleUpdateDish = async () => {
-    const newDish = {
+    const dish = {
       dish_id,
       title,
       category,
@@ -98,25 +98,33 @@ export const EditDish = () => {
       description,
     };
 
-    await updateDish(newDish, dishFile).then(() => {
-      navigate("/");
-    });
+    if (confirm("Confirma atualização dos dados do prato?")) {
+      await updateDish(dish, dishFile).then(() => {
+        navigate("/");
+      });
+    }
   };
 
   //Pede para deletar o prato do banco de dados.
-  const handleDeleteDish = () => {};
+  const handleDeleteDish = async () => {
+    if (confirm("Quer mesmo deletar este prato?")) {
+      await deleteDish(dish_id).then(() => {
+        navigate("/");
+      });
+    }
+  };
 
   //Busca os dados do prato para adicionar aos inputs.
   useEffect(() => {
     const fetchData = async () => {
       const response = await getDishById(dish_id);
       setForm({
+        ...form,
         title: response?.title,
         description: response?.description,
         category: response?.category,
         price: response?.price,
         ingredients: response?.ingredients,
-        newIngredient: "",
       });
     };
 

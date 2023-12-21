@@ -62,6 +62,22 @@ const DishDataProvider = ({ children }) => {
     }
   });
 
+  const deleteDish = useCallback(async (id) => {
+    try {
+      if (loading) return;
+
+      return api.delete(`/Dishes/${id}`).then(() => {
+        alert("Prato deletado com sucesso");
+      });
+    } catch (err) {
+      if (err.response) {
+        alert(err.response.data.message);
+      } else {
+        alert("Não foi possível deletar o prato do banco de dados.");
+      }
+    }
+  });
+
   const getDishesCategories = useCallback(async () => {
     try {
       if (loading) return;
@@ -144,6 +160,7 @@ const DishDataProvider = ({ children }) => {
       getDishById,
       createNewDish,
       updateDish,
+      deleteDish,
     }),
     [
       getDishImage,
@@ -152,6 +169,7 @@ const DishDataProvider = ({ children }) => {
       getDishById,
       createNewDish,
       updateDish,
+      deleteDish,
     ]
   );
 

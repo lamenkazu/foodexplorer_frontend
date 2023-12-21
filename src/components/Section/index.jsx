@@ -16,7 +16,7 @@ export const Section = ({ title }) => {
     };
 
     fetch();
-  }, []);
+  }, [data]);
   return (
     <Container>
       <h3>{title}</h3>
