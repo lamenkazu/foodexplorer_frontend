@@ -23,7 +23,6 @@ export const EditDish = () => {
   const navigate = useNavigate();
   const { getDishById, updateDish } = useDishData();
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(false);
 
   const [form, setForm] = useState({
     dishFile: null,
@@ -52,7 +51,9 @@ export const EditDish = () => {
       description,
     };
 
-    await updateDish(newDish, dishFile);
+    await updateDish(newDish, dishFile).then(() => {
+      navigate("/");
+    });
   };
 
   const handleFormChanges = (e) => {
@@ -100,7 +101,6 @@ export const EditDish = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await getDishById(dish_id);
-      setData(response);
       setForm({
         title: response?.title,
         description: response?.description,
@@ -117,7 +117,6 @@ export const EditDish = () => {
 
   return (
     <Container>
-      {console.log(data)}
       <InputWrapper>
         {
           //GoBack -> Botão para voltar para a página anterior

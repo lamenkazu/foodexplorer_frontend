@@ -6,9 +6,9 @@ import {
   useEffect,
   useMemo,
 } from "react";
-import { api } from "../services/api";
-
 import { useAuth } from "./auth";
+
+import { api } from "../services/api";
 
 const DishDataContext = createContext({});
 const useDishData = () => useContext(DishDataContext);
@@ -38,7 +38,28 @@ const DishDataProvider = ({ children }) => {
   });
 
   const updateDish = useCallback(async (dish, dishFile) => {
-    console.log(dish, dishFile);
+    const { dish_id, title, category, price, ingredients, description } = dish;
+    try {
+      if (loading) return;
+
+      return api
+        .put(`/Dishes/${dish_id}`, {
+          title,
+          category,
+          price,
+          ingredients,
+          description,
+        })
+        .then(() => {
+          alert("Prato atualizado com sucesso");
+        });
+    } catch (err) {
+      if (err.response) {
+        alert(err.response.data.message);
+      } else {
+        alert("Não foi possível atualizar o novo prato no banco de dados.");
+      }
+    }
   });
 
   const getDishesCategories = useCallback(async () => {
