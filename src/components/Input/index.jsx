@@ -5,7 +5,7 @@ export const Input = ({ id, lbl, ...rest }) => {
   return (
     <Container>
       <Label htmlFor={id}>{lbl}</Label>
-      <StyledInput id={id} type="text" {...rest} />
+      <StyledInput id={id} {...rest} />
     </Container>
   );
 };
