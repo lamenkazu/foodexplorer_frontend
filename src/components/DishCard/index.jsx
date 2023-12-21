@@ -1,18 +1,9 @@
-import { useState } from "react";
-
 import { useAuth } from "../../hooks/auth";
 import { useDishData } from "../../hooks/dishData";
 
-import {
-  Container,
-  Cover,
-  StyledButton,
-  P,
-  Span,
-  Empty,
-  StyledLink,
-} from "./styles";
+import { Container, Cover, StyledButton, P, Span, StyledLink } from "./styles";
 import { Stepper } from "../Stepper";
+import { Empty } from "../../components/Empty";
 
 import { CiHeart } from "react-icons/ci";
 import { PiPencilSimpleLight } from "react-icons/pi";
@@ -45,7 +36,7 @@ export const DishCard = ({ data }) => {
           <StyledButton title="Incluir" />
         </>
       ) : (
-        <Empty></Empty>
+        <Empty />
       )}
     </Container>
   );
