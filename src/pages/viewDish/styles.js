@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../../components/Button";
+import { GoBack } from "../../components/GoBack";
 
 export const Container = styled.main`
   grid-area: content;
@@ -10,18 +10,8 @@ export const Container = styled.main`
   text-align: center;
 `;
 
-export const GoBack = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-
-  > p {
-    color: ${({ theme }) => theme.LIGHT_300};
-    font-size: 2.4rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 140%; /* 33.6px */
-  }
+export const StyledGoBack = styled(GoBack)`
+  font-size: 2.4rem;
 `;
 
 export const Cover = styled.img`
