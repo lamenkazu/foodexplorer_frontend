@@ -28,6 +28,7 @@ export const Header = () => {
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
   const [sideBar, setSideBar] = useState(false);
+
   const handleSideBar = () => setSideBar(!sideBar);
 
   const handleSignOut = () => {
@@ -35,6 +36,11 @@ export const Header = () => {
       signOut();
       navigate("/");
     }
+  };
+
+  const handleNewDish = () => {
+    navigate("/new");
+    setSideBar(false);
   };
 
   return (
@@ -52,7 +58,7 @@ export const Header = () => {
               <input type="text" name="" id="" />
             </Search>
             {[USER_ROLE.ADMIN].includes(user.role) && (
-              <SideBarItem>Novo prato</SideBarItem>
+              <SideBarItem onClick={handleNewDish}>Novo prato</SideBarItem>
             )}
             <SideBarItem onClick={handleSignOut}>Sair</SideBarItem>
           </Content>
@@ -75,7 +81,6 @@ export const Header = () => {
 
       {![USER_ROLE.ADMIN].includes(user.role) ? (
         <>
-          {" "}
           <Recipe>
             <PiReceiptLight />
             <Count>
@@ -85,7 +90,7 @@ export const Header = () => {
           </Recipe>
         </>
       ) : (
-        <StyledButton title="Novo produto" />
+        <StyledButton title="Novo prato" onClick={handleNewDish} />
       )}
 
       {[USER_ROLE.ADMIN].includes(user.role) && <Empty />}
