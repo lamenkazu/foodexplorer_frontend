@@ -17,24 +17,60 @@ import { Marker } from "../../components/Marker";
 import { PiCaretLeft, PiUploadSimple } from "react-icons/pi";
 
 export const NewDish = () => {
-  const [tags, setTags] = useState([]);
-  const [newTag, setNewTag] = useState("");
-  const [dishFile, setDishFile] = useState(null);
+  const [form, setForm] = useState({
+    dishFile: null,
+    title: "",
+    category: "",
+    price: "",
+    description: "",
+    ingredients: [],
+    newIngredient: "",
+  });
+
+  const handleSaveDish = () => {
+    console.log(form);
+  };
+
+  const handleFormChanges = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleCategoryChange = (e) => {
+    setForm({ ...form, category: e.target.value });
+  };
 
   const handleDishImage = (event) => {
     const file = event.target.files[0];
-    setDishFile(file);
+
+    //Adiciona apenas imagens JPG e PNG
+    if (file) {
+      const allowedExtensions = ["jpg", "jpeg", "png"];
+      const fileNameParts = file.name.split(".");
+      const fileExtension =
+        fileNameParts[fileNameParts.length - 1].toLowerCase();
+
+      if (allowedExtensions.includes(fileExtension)) {
+        setForm({ ...form, dishFile: file });
+      } else {
+        alert("Apenas imagens no formato PNG e JPG serão aceitas.");
+      }
+    }
   };
 
   const handleAddMarker = () => {
-    if (newTag === "") return;
-
-    setTags((prevState) => [...prevState, newTag]);
-    setNewTag("");
+    if (form.newIngredient === "") return;
+    setForm({
+      ...form,
+      ingredients: [...form.ingredients, form.newIngredient],
+      newIngredient: "",
+    });
   };
 
   const handleRemoveMarker = (deleted) => {
-    setTags((prevState) => prevState.filter((_, index) => index !== deleted));
+    setForm({
+      ...form,
+      ingredients: form.ingredients.filter((_, index) => index !== deleted),
+    });
   };
 
   const handleGoBack = () => {
@@ -51,28 +87,33 @@ export const NewDish = () => {
         <h1>Novo Prato</h1>
 
         <InputFileWrapper>
-          <label htmlFor="fileImage">Imagem do prato</label>
+          <label htmlFor="fileImageLBL">Imagem do prato</label>
 
-          <label htmlFor="fileImage">
+          <label id="fileImageLBL" htmlFor="fileImage">
             <PiUploadSimple size={32} />
 
-            <input
-              lbl="Imagem do prato"
-              id="fileImage"
-              type="file"
-              onChange={handleDishImage}
-            />
+            <input id="fileImage" type="file" onChange={handleDishImage} />
             <label htmlFor="fileImage">
-              {dishFile ? dishFile.name : "Selecione imagem"}
+              {form.dishFile ? form.dishFile.name : "Selecione imagem"}
             </label>
           </label>
         </InputFileWrapper>
 
-        <Input lbl="Nome" id="name" placeholder="Ex.: Salada Ceasar" />
+        <Input
+          lbl="Nome"
+          id="name"
+          placeholder="Ex.: Salada Ceasar"
+          name="title"
+          onChange={handleFormChanges}
+        />
 
         <SelectWrapper>
           <label htmlFor="category">Categoria</label>
-          <Select id="category">
+          <Select
+            id="category"
+            onChange={handleCategoryChange}
+            value={form.category}
+          >
             <option value=""></option>
             <option value="Refeição">Refeição</option>
             <option value="Prato Principal">Prato Principal</option>
@@ -84,7 +125,7 @@ export const NewDish = () => {
           <label htmlFor="ingredients">Ingredientes</label>
 
           <div>
-            {tags.map((tag, index) => (
+            {form.ingredients.map((tag, index) => (
               <Marker
                 key={index}
                 value={tag}
@@ -94,11 +135,11 @@ export const NewDish = () => {
               />
             ))}
             <Marker
-              name="newMarker"
+              name="newIngredient"
               isNew
               placeholder="Adicionar"
-              value={newTag}
-              onChange={(e) => setNewTag(e.target.value)}
+              value={form.newIngredient}
+              onChange={handleFormChanges}
               onClick={handleAddMarker}
               onKeyPress={(e) => {
                 if (e.key === "Enter") {
@@ -109,18 +150,25 @@ export const NewDish = () => {
           </div>
         </MarkerWrapper>
 
-        <Input lbl="Preço" id="price" placeholder="R$ 00,00" />
+        <Input
+          lbl="Preço"
+          id="price"
+          placeholder="R$ 00,00"
+          name="price"
+          onChange={handleFormChanges}
+        />
 
         <TextareaWrapper>
           <label htmlFor="description">Descrição</label>
           <textarea
-            name="description"
             id="description"
             placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+            name="description"
+            onChange={handleFormChanges}
           ></textarea>
         </TextareaWrapper>
 
-        <Button title="Salvar alterações" />
+        <Button title="Salvar alterações" onClick={handleSaveDish} />
       </InputWrapper>
     </Container>
   );

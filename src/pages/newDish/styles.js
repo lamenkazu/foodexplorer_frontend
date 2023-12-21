@@ -22,7 +22,7 @@ export const InputFileWrapper = styled.section`
   > label:last-child {
     display: flex;
     align-items: center;
-    gap: 2.4rem;
+    gap: 0.8rem;
 
     background-color: ${({ theme }) => theme.DARK_800};
 
