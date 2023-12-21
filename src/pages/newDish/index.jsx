@@ -20,12 +20,21 @@ export const NewDish = () => {
   const [form, setForm] = useState({
     dishFile: null,
     title: "",
+    description: "",
     category: "",
     price: "",
-    description: "",
     ingredients: [],
     newIngredient: "",
   });
+
+  // Verifica se algum campo obrigatório está vazio
+  const isFormEmpty = () => {
+    const { title, category, price, ingredients, dishFile } = form;
+
+    return (
+      !title || !category || !price || ingredients.length === 0 || !dishFile
+    );
+  };
 
   const handleSaveDish = () => {
     console.log(form);
@@ -76,6 +85,7 @@ export const NewDish = () => {
   const handleGoBack = () => {
     navigate(-1);
   };
+
   return (
     <Container>
       <InputWrapper>
@@ -168,7 +178,11 @@ export const NewDish = () => {
           ></textarea>
         </TextareaWrapper>
 
-        <Button title="Salvar alterações" onClick={handleSaveDish} />
+        <Button
+          loading={isFormEmpty()}
+          title="Salvar alterações"
+          onClick={handleSaveDish}
+        />
       </InputWrapper>
     </Container>
   );
