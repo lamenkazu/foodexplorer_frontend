@@ -44,10 +44,6 @@ export const NewDish = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleCategoryChange = (e) => {
-    setForm({ ...form, category: e.target.value });
-  };
-
   const handleDishImage = (event) => {
     const file = event.target.files[0];
 
@@ -120,8 +116,9 @@ export const NewDish = () => {
         <SelectWrapper>
           <label htmlFor="category">Categoria</label>
           <Select
+            name="category"
             id="category"
-            onChange={handleCategoryChange}
+            onChange={handleFormChanges}
             value={form.category}
           >
             <option value=""></option>
