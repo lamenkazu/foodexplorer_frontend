@@ -21,6 +21,8 @@ export const Container = styled.div`
 `;
 
 export const FoodWrapper = styled.section`
+  max-width: 100vw;
+  overflow-x: scroll;
   display: flex;
   gap: 2.6rem;
 `;

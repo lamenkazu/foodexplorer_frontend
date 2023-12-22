@@ -16,7 +16,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.DARK_300};
 
   > svg {
-    position: absolute;
+    position: relative;
     align-self: flex-end;
     font-size: 2.6rem;
     cursor: pointer;

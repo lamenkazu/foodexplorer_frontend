@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.main`
+  grid-area: content;
   padding-top: 4.4rem;
 
   @media (min-width: 405px) {
