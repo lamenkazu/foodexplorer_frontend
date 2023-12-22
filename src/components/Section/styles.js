@@ -19,3 +19,8 @@ export const Container = styled.div`
     margin-bottom: 2.4rem;
   }
 `;
+
+export const FoodWrapper = styled.section`
+  display: flex;
+  gap: 2.6rem;
+`;
