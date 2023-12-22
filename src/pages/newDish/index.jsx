@@ -16,8 +16,10 @@ import { Button } from "../../components/Button";
 import { Marker } from "../../components/Marker";
 
 import { PiCaretLeft, PiUploadSimple } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 
 export const NewDish = () => {
+  const navigate = useNavigate();
   const { createNewDish } = useDishData();
 
   const [form, setForm] = useState({
@@ -47,7 +49,9 @@ export const NewDish = () => {
     };
 
     if (confirm("Confirma que os dados estão corretos para salvar?"))
-      await createNewDish(newDish, dishFile);
+      await createNewDish(newDish, dishFile).then(() => {
+        navigate("/");
+      });
   };
 
   const handleFormChanges = (e) => {
@@ -143,6 +147,7 @@ export const NewDish = () => {
             <option value="">Selecionar</option>
             <option value="Refeição">Refeição</option>
             <option value="Prato Principal">Prato Principal</option>
+            <option value="Sobremesa">Sobremesa</option>
             <option value="Bebida">Bebida</option>
           </Select>
         </SelectWrapper>

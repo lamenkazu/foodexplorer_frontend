@@ -27,7 +27,7 @@ const DishDataProvider = ({ children }) => {
 
       return await api
         .post("/Dishes", formData)
-        .then((message) => alert(message));
+        .then(() => alert("Prato criado com sucesso!"));
     } catch (err) {
       if (err.response) {
         alert(err.response.data.message);
@@ -83,12 +83,14 @@ const DishDataProvider = ({ children }) => {
       if (loading) return;
 
       const response = await api.get("/Dishes?title&category&ingredients");
-      setCategories(
-        response.data.map((dish) => ({
-          dish_id: dish.dish_id,
-          category: dish.category,
-        }))
+
+      const uniqueCategories = new Set(
+        response.data.map((dish) => dish.category)
       );
+
+      const uniqueCategoriesArray = Array.from(uniqueCategories);
+
+      setCategories(uniqueCategoriesArray);
 
       return categories;
     } catch (err) {
@@ -150,7 +152,7 @@ const DishDataProvider = ({ children }) => {
 
   useEffect(() => {
     getDishesCategories();
-  }, []);
+  }, [categories]);
 
   const dishDataValue = useMemo(
     () => ({

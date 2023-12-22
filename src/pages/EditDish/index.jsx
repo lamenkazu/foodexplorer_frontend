@@ -176,6 +176,7 @@ export const EditDish = () => {
             <option value="">Selecionar</option>
             <option value="Refeição">Refeição</option>
             <option value="Prato Principal">Prato Principal</option>
+            <option value="Sobremesa">Sobremesa</option>
             <option value="Bebida">Bebida</option>
           </Select>
         </SelectWrapper>

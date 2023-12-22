@@ -23,8 +23,8 @@ export const Home = () => {
         </HeaderCard>
       </HeaderMain>
 
-      {categories?.map((dish) => (
-        <Section key={dish.dish_id} title={dish.category}></Section>
+      {categories?.map((category, index) => (
+        <Section key={index} title={category}></Section>
       ))}
     </Container>
   );
