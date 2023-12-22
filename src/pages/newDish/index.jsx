@@ -6,7 +6,6 @@ import {
   InputFileWrapper,
   InputWrapper,
   SelectWrapper,
-  Select,
   MarkerWrapper,
   TextareaWrapper,
 } from "./styles";
@@ -14,6 +13,7 @@ import { Input } from "../../components/Input";
 import { GoBack } from "../../components/GoBack";
 import { Button } from "../../components/Button";
 import { Marker } from "../../components/Marker";
+import { Select } from "../../components/Select";
 
 import { PiCaretLeft, PiUploadSimple } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
@@ -143,13 +143,7 @@ export const NewDish = () => {
             id="category"
             onChange={handleFormChanges}
             value={form.category}
-          >
-            <option value="">Selecionar</option>
-            <option value="Refeição">Refeição</option>
-            <option value="Prato Principal">Prato Principal</option>
-            <option value="Sobremesa">Sobremesa</option>
-            <option value="Bebida">Bebida</option>
-          </Select>
+          />
         </SelectWrapper>
 
         {
