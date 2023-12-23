@@ -32,7 +32,6 @@ export const Home = () => {
 
   return (
     <Container>
-      {console.log(isDesktop)}
       <HeaderMain>
         <img
           src={isDesktop ? homeHeaderImg : homeHeaderDesktopImg}
