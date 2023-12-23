@@ -9,9 +9,10 @@ export const Container = styled.main`
     text-align: center;
   }
 
-  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     align-items: center;
     padding-inline: 12.3rem;
+    padding-top: 17.2rem;
   }
 `;
 
@@ -33,6 +34,12 @@ export const HeaderMain = styled.section`
     @media (min-width: 573px) {
       top: 10.8rem;
     }
+
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+      top: 12.8rem;
+      left: 9rem;
+      height: 41.2rem;
+    }
   }
 `;
 
@@ -44,15 +51,46 @@ export const HeaderCard = styled.div`
   width: 100%;
 
   padding: 3.6rem 0.8rem 2.2rem 15.3rem;
-  h2 {
+
+  color: ${({ theme }) => theme.LIGHT_300};
+
+  > h2 {
     font-size: 1.8rem;
     font-style: normal;
     font-weight: 600;
     line-height: 140%;
   }
 
-  p {
+  > p {
     font-size: 1.2rem;
     line-height: 140%;
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+    > h2 {
+      margin-top: -3rem;
+      font-size: 4rem;
+    }
+
+    > p {
+      font-size: 1.6rem;
+    }
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    height: 26rem;
+
+    padding-left: 50rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    > h2 {
+      margin-top: -3rem;
+      font-size: 4rem;
+    }
+
+    > p {
+      font-size: 1.6rem;
+    }
   }
 `;

@@ -22,7 +22,7 @@ export function Button({
       $contra={contra}
       {...rest}
     >
-      {Icon && <Icon size={22} />}
+      {Icon && <Icon />}
       <p> {title}</p>
     </Container>
   );
