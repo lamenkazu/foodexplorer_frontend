@@ -38,7 +38,7 @@ export const Container = styled.header`
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
-    align-items: center;
+    align-items: end;
     padding-inline: 12.3rem;
   }
 `;
@@ -59,10 +59,33 @@ export const StyledButton = styled(Button)`
 
     height: max-content;
     max-width: 20.2rem;
-    padding: 0.8rem 3.2rem;
+    padding: 0.35rem 3.2rem;
     > p {
       width: max-content;
     }
+
+    > svg {
+      font-size: 3.2rem;
+    }
+  }
+`;
+
+export const Btn = styled.button`
+  display: none;
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+    display: flex;
+    border: none;
+    background-color: ${({ theme }) => theme.TOMATO};
+    border-radius: 0.8rem;
+
+    margin-top: 3.4rem;
+
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 20.2rem;
+    height: 4rem;
   }
 `;
 
@@ -80,6 +103,11 @@ export const StyledLink = styled(Link)`
   @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
     flex-direction: column;
     gap: 0;
+
+    > img {
+      width: 19.7rem;
+      min-height: 2.9rem;
+    }
   }
 `;
 
@@ -104,17 +132,7 @@ export const Recipe = styled.button`
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
-    margin-top: -1.4rem;
-    background-color: ${({ theme }) => theme.TOMATO};
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.8rem;
-
-    height: max-content;
-    border-radius: 0.5rem;
-    width: 152px;
-    padding: 0.8rem 7rem 0.8rem 3.2rem;
+    display: none;
   }
 `;
 
@@ -128,25 +146,9 @@ export const Count = styled.div`
   top: -3.2rem;
   right: -1.2rem;
 
-  > p:first-child {
-    display: none;
-  }
-
   > p {
     font-size: 0.81rem;
     font-weight: 500;
-  }
-
-  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
-    background: none;
-    position: static;
-    > p:first-child {
-      display: block;
-      width: max-content;
-    }
-    > p:last-child {
-      display: none;
-    }
   }
 `;
 

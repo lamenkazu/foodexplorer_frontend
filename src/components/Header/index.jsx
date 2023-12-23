@@ -14,6 +14,7 @@ import {
   Search,
   SignOut,
   StyledButton,
+  Btn,
   StyledLink,
   Empty,
 } from "./styles";
@@ -81,16 +82,16 @@ export const Header = () => {
 
       {![USER_ROLE.ADMIN].includes(user.role) ? (
         <>
+          <StyledButton icon={PiReceiptLight} title="Pedidos (1)" />
           <Recipe>
             <PiReceiptLight />
             <Count>
-              <p>Pedidos (1)</p>
               <p>1</p>
             </Count>
           </Recipe>
         </>
       ) : (
-        <StyledButton title="Novo prato" onClick={handleNewDish} />
+        <Btn onClick={handleNewDish}>Novo prato</Btn>
       )}
 
       {[USER_ROLE.ADMIN].includes(user.role) && <Empty />}
