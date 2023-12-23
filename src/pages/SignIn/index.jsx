@@ -26,6 +26,8 @@ export const SignIn = () => {
 
   return (
     <Container>
+      <h1>Faça login</h1>
+
       <InputWrapper>
         <Input
           id="email"
@@ -34,6 +36,11 @@ export const SignIn = () => {
           type="email"
           placeholder="Exemplo: exemplo@mail.com"
           onChange={handleFormChanges}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              handleSignIn();
+            }
+          }}
         />
         <Input
           id="password"
@@ -42,6 +49,11 @@ export const SignIn = () => {
           type="password"
           placeholder="No mínimo 6 caracteres"
           onChange={handleFormChanges}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              handleSignIn();
+            }
+          }}
         />
       </InputWrapper>
       <Button title="Entrar" onClick={handleSignIn} />

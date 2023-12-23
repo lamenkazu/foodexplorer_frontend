@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "./../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
   max-width: max-content;
@@ -7,7 +8,7 @@ export const Container = styled.div`
   grid-template-columns: 100%;
   grid-template-rows: auto auto;
 
-  margin: 5.8rem auto;
+  margin: 15.8rem auto;
 
   grid-template-areas:
     "title"
@@ -17,7 +18,13 @@ export const Container = styled.div`
     grid-area: title;
     width: 27.8rem;
     height: 4.4rem;
+    margin: 0 auto;
+  }
 
-    margin-bottom: 7.3rem;
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    display: flex;
+    gap: 30rem;
+    margin: 0 auto;
+    align-items: center;
   }
 `;

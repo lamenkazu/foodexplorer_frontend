@@ -22,15 +22,18 @@ export const Container = styled.div`
     "footer";
 
   @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
-    grid-template-rows: 9.6rem 1fr max-content;
+    grid-template-rows: 11.4rem 1fr max-content;
 
     grid-template-columns: 100vw;
 
     margin: 0;
+  }
 
-    grid-template-areas:
-      "header"
-      "content"
-      "footer";
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    grid-template-rows: 9.4rem 1fr max-content;
+
+    grid-template-columns: 100vw;
+
+    margin: 0;
   }
 `;
