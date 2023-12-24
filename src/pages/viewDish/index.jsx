@@ -59,34 +59,37 @@ export const ViewDish = () => {
             <p>voltar</p>
           </GoBack>
 
-          <Cover src={dishImg} alt="" />
+          <section>
+            <Cover src={dishImg} alt="" />
+            <div>
+              <ContentDetails>
+                <h1>{data.title}</h1>
 
-          <ContentDetails>
-            <h1>{data.title}</h1>
+                <p>{data.description}</p>
 
-            <p>{data.description}</p>
+                <IngredientTags>
+                  {data?.ingredients?.map((ingredient) => (
+                    <IngredientTag
+                      key={`${dish_id}${ingredient}`}
+                      title={ingredient}
+                    />
+                  ))}
+                </IngredientTags>
+              </ContentDetails>
 
-            <IngredientTags>
-              {data?.ingredients?.map((ingredient) => (
-                <IngredientTag
-                  key={`${dish_id}${ingredient}`}
-                  title={ingredient}
-                />
-              ))}
-            </IngredientTags>
-          </ContentDetails>
-
-          {![USER_ROLE.ADMIN].includes(user.role) ? (
-            <CustomerOrder>
-              <Stepper />
-              <StyledButton
-                icon={PiReceiptLight}
-                title={`pedir ∙ R$ ${data.price}`}
-              />
-            </CustomerOrder>
-          ) : (
-            <StyledButton title={`Editar Prato`} onClick={goToEditPage} />
-          )}
+              {![USER_ROLE.ADMIN].includes(user.role) ? (
+                <CustomerOrder>
+                  <Stepper />
+                  <StyledButton
+                    icon={PiReceiptLight}
+                    title={`pedir ∙ R$ ${data.price}`}
+                  />
+                </CustomerOrder>
+              ) : (
+                <StyledButton title={`Editar Prato`} onClick={goToEditPage} />
+              )}
+            </div>
+          </section>
         </>
       ) : (
         <Empty />

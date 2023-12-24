@@ -32,19 +32,19 @@ export const Container = styled.header`
       width: 100%;
     }
 
-    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    @media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
       display: none;
     }
   }
 
-  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     align-items: end;
     padding-inline: 12.3rem;
   }
 `;
 
 export const Empty = styled.div`
-  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     display: none;
   }
 `;
@@ -52,7 +52,7 @@ export const Empty = styled.div`
 export const StyledButton = styled(Button)`
   display: none;
 
-  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     display: flex;
 
     margin-top: -1.4rem;
@@ -73,7 +73,7 @@ export const StyledButton = styled(Button)`
 export const Btn = styled.button`
   display: none;
 
-  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     display: flex;
     border: none;
     background-color: ${({ theme }) => theme.TOMATO};
@@ -100,7 +100,7 @@ export const StyledLink = styled(Link)`
     line-height: 160%; /* 19.2px */
   }
 
-  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     flex-direction: column;
     gap: 0;
 
@@ -119,7 +119,7 @@ export const Menu = styled.button`
     font-size: 2.5rem;
   }
 
-  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     display: none;
   }
 `;
@@ -234,7 +234,7 @@ export const SignOut = styled.div`
     cursor: pointer;
   }
 
-  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     display: block;
   }
 `;
