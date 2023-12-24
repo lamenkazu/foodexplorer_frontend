@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.select`
   background-color: ${({ theme }) => theme.DARK_900};
@@ -21,5 +22,10 @@ export const Container = styled.select`
 
   > option {
     min-width: 10rem;
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    padding: 1rem 1.6rem;
+    margin-top: 0.3rem;
   }
 `;

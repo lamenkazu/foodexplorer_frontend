@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Input = styled.input`
   display: flex;
@@ -16,7 +17,9 @@ export const Input = styled.input`
 
 export const Container = styled.div`
   display: flex;
-  align-items: end;
+  align-items: center;
+  padding: 0.3rem 1.2rem;
+
   width: max-content;
 
   background-color: ${({ theme, $isnew }) =>
@@ -37,8 +40,23 @@ export const Container = styled.div`
   }
 
   > button {
+    margin-top: 0.5rem;
     border: none;
     background: none;
     color: ${({ theme }) => theme.LIGHT_100};
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    /* > p {
+    height: 3.2rem;
+    padding: 0.3rem 1.2rem;
+  } */
+
+    > button {
+      margin-top: 0.5rem;
+      border: none;
+      background: none;
+      color: ${({ theme }) => theme.LIGHT_100};
+    }
   }
 `;

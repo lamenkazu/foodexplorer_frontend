@@ -9,10 +9,12 @@ import {
   MarkerWrapper,
   TextareaWrapper,
   ButtonsWrapper,
+  DivisoryOne,
+  DivisoryTwo,
+  StyledButton,
 } from "./styles";
 import { Input } from "../../components/Input";
 import { GoBack } from "../../components/GoBack";
-import { Button } from "../../components/Button";
 import { Marker } from "../../components/Marker";
 import { Select } from "../../components/Select";
 
@@ -22,7 +24,6 @@ import { useNavigate } from "react-router-dom";
 export const DishForm = ({
   confirmMessage = "Confirma que os dados estão corretos para salvar?",
   pageTitle = "Novo prato",
-  imageLabel = "Selecione imagem",
   isNew = false,
   dishData = {
     dishFile: null,
@@ -158,91 +159,94 @@ export const DishForm = ({
           //GoBack -> Botão para voltar para a página anterior
         }
         <GoBack onClick={handleGoBack}>
-          <PiCaretLeft size={22} />
+          <PiCaretLeft />
           <p>voltar</p>
         </GoBack>
 
         <h1>{pageTitle}</h1>
 
-        {
-          //InputFileWrapper -> Input do arquivo da imagem
-        }
-        <InputFileWrapper>
-          <label htmlFor="fileImageLBL">Imagem do prato</label>
+        <DivisoryOne>
+          {
+            //InputFileWrapper -> Input do arquivo da imagem
+          }
+          <InputFileWrapper>
+            <label htmlFor="fileImageLBL">Imagem do prato</label>
 
-          <label id="fileImageLBL" htmlFor="fileImage">
-            <PiUploadSimple size={32} />
+            <label id="fileImageLBL" htmlFor="fileImage">
+              <PiUploadSimple size={30} />
 
-            <input id="fileImage" type="file" onChange={handleDishImage} />
-            <label htmlFor="fileImage">
-              {form.dishFile ? form.dishFile.name : imageLabel}
+              <input id="fileImage" type="file" onChange={handleDishImage} />
+              <label htmlFor="fileImage">
+                {form.dishFile ? form.dishFile.name : "Selecione imagem"}
+              </label>
             </label>
-          </label>
-        </InputFileWrapper>
+          </InputFileWrapper>
 
-        <Input
-          lbl="Nome"
-          id="name"
-          placeholder="Ex.: Salada Ceasar"
-          name="title"
-          value={form.title}
-          onChange={handleFormChanges}
-        />
-
-        {
-          //SelectWrapper -> Input Select de Categoria
-        }
-        <SelectWrapper>
-          <label htmlFor="category">Categoria</label>
-          <Select
-            name="category"
-            id="category"
+          <Input
+            lbl="Nome"
+            id="name"
+            placeholder="Ex.: Salada Ceasar"
+            name="title"
+            value={form.title}
             onChange={handleFormChanges}
-            value={form.category}
           />
-        </SelectWrapper>
 
-        {
-          //MarkerWrapper -> Input de tags de ingredientes
-        }
-        <MarkerWrapper>
-          <label htmlFor="ingredients">Ingredientes</label>
+          {
+            //SelectWrapper -> Input Select de Categoria
+          }
+          <SelectWrapper>
+            <label htmlFor="category">Categoria</label>
+            <Select
+              name="category"
+              id="category"
+              onChange={handleFormChanges}
+              value={form.category}
+            />
+          </SelectWrapper>
+        </DivisoryOne>
 
-          <div>
-            {form.ingredients?.map((tag, index) => (
+        <DivisoryTwo>
+          {
+            //MarkerWrapper -> Input de tags de ingredientes
+          }
+          <MarkerWrapper>
+            <label htmlFor="ingredients">Ingredientes</label>
+
+            <div>
+              {form.ingredients?.map((tag, index) => (
+                <Marker
+                  key={index}
+                  value={tag}
+                  onClick={() => {
+                    handleRemoveMarker(index);
+                  }}
+                />
+              ))}
               <Marker
-                key={index}
-                value={tag}
-                onClick={() => {
-                  handleRemoveMarker(index);
+                name="newIngredient"
+                isNew
+                placeholder="Adicionar"
+                value={form.newIngredient}
+                onChange={handleFormChanges}
+                onClick={handleAddMarker}
+                onKeyPress={(e) => {
+                  if (e.key === "Enter") {
+                    handleAddMarker();
+                  }
                 }}
               />
-            ))}
-            <Marker
-              name="newIngredient"
-              isNew
-              placeholder="Adicionar"
-              value={form.newIngredient}
-              onChange={handleFormChanges}
-              onClick={handleAddMarker}
-              onKeyPress={(e) => {
-                if (e.key === "Enter") {
-                  handleAddMarker();
-                }
-              }}
-            />
-          </div>
-        </MarkerWrapper>
+            </div>
+          </MarkerWrapper>
 
-        <Input
-          lbl="Preço"
-          id="price"
-          placeholder="R$ 00,00"
-          name="price"
-          value={form.price}
-          onChange={handleFormChanges}
-        />
-
+          <Input
+            lbl="Preço"
+            id="price"
+            placeholder="R$ 00,00"
+            name="price"
+            value={form.price}
+            onChange={handleFormChanges}
+          />
+        </DivisoryTwo>
         {
           //TextareaWrapper -> Input da descrição do prato
         }
@@ -262,9 +266,13 @@ export const DishForm = ({
         }
         <ButtonsWrapper>
           {!isNew && (
-            <Button contra title="Excluir prato" onClick={handleDeleteDish} />
+            <StyledButton
+              contra
+              title="Excluir prato"
+              onClick={handleDeleteDish}
+            />
           )}
-          <Button
+          <StyledButton
             loading={isFormEmpty()}
             title="Salvar alterações"
             onClick={decideSave}

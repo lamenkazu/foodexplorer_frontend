@@ -41,7 +41,6 @@ export const EditDish = () => {
       <DishForm
         confirmMessage="Confirma atualização dos dados do prato?"
         pageTitle="Editar prato"
-        imageLabel="Selecione imagem para alterá-la"
         dishData={data}
         dish_id={dish_id}
       />

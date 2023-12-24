@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
+import { Button } from "../Button";
 
 export const Container = styled.div`
   grid-area: content;
@@ -11,7 +13,7 @@ export const InputFileWrapper = styled.section`
   flex-direction: column;
 
   > label:first-child {
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
     color: ${({ theme }) => theme.LIGHT_400};
     font-size: 1.6rem;
     font-style: normal;
@@ -26,7 +28,7 @@ export const InputFileWrapper = styled.section`
 
     background-color: ${({ theme }) => theme.DARK_800};
 
-    padding: 1.2rem 3.2rem;
+    padding: 0.6rem 3.2rem;
     border-radius: 0.8rem;
 
     cursor: pointer;
@@ -42,6 +44,10 @@ export const InputFileWrapper = styled.section`
       line-height: 24px; /* 171.429% */
     }
   }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+    min-width: 225px;
+  }
 `;
 export const InputWrapper = styled.section`
   display: flex;
@@ -51,6 +57,40 @@ export const InputWrapper = styled.section`
   > div {
     input {
       background-color: ${({ theme }) => theme.DARK_800};
+    }
+  }
+
+  > h1 {
+    font-size: 3.2rem;
+  }
+`;
+
+export const DivisoryOne = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    flex-direction: row;
+
+    > div:nth-child(2) {
+      width: 100%;
+    }
+  }
+`;
+
+export const DivisoryTwo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    flex-direction: row;
+
+    > div:nth-child(2) {
+      input {
+        height: 100%;
+      }
     }
   }
 `;
@@ -66,6 +106,10 @@ export const SelectWrapper = styled.div`
     font-style: normal;
     font-weight: 400;
     line-height: 100%; /* 16px */
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    min-width: 33.2rem;
   }
 `;
 
@@ -93,6 +137,10 @@ export const MarkerWrapper = styled.section`
     padding: 0.8rem;
     background-color: ${({ theme }) => theme.DARK_800};
   }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    width: 100%;
+  }
 `;
 
 export const TextareaWrapper = styled.section`
@@ -114,4 +162,11 @@ export const TextareaWrapper = styled.section`
 export const ButtonsWrapper = styled.section`
   display: flex;
   gap: 3.2rem;
+  justify-content: right;
+`;
+
+export const StyledButton = styled(Button)`
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    max-width: 20rem;
+  }
 `;
