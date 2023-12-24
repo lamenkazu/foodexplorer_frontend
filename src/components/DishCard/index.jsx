@@ -1,7 +1,16 @@
 import { useAuth } from "../../hooks/auth";
 import { useDishData } from "../../hooks/dishData";
 
-import { Container, Cover, StyledButton, P, Span, StyledLink } from "./styles";
+import {
+  Container,
+  Cover,
+  StyledButton,
+  H2,
+  P,
+  Span,
+  StyledLink,
+  CustomerOptions,
+} from "./styles";
 import { Stepper } from "../Stepper";
 import { Empty } from "../../components/Empty";
 
@@ -33,15 +42,16 @@ export const DishCard = ({ data }) => {
 
       <StyledLink to={`/view/${data.dish_id}`}>
         <Cover src={dishImg} alt="Imagem do alimento" />
-        <P>{data.title} &gt;</P>
+        <H2>{data.title} &gt;</H2>
+        <P>{data.description}</P>
         <Span>R$ {data.price} </Span>
       </StyledLink>
 
       {![USER_ROLE.ADMIN].includes(user.role) ? (
-        <>
+        <CustomerOptions>
           <Stepper />
           <StyledButton title="Incluir" />
-        </>
+        </CustomerOptions>
       ) : (
         <Empty />
       )}

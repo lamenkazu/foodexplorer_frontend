@@ -88,7 +88,7 @@ const DishDataProvider = ({ children }) => {
         response.data.map((dish) => dish.category)
       );
 
-      const uniqueCategoriesArray = Array.from(uniqueCategories);
+      const uniqueCategoriesArray = Array.from(uniqueCategories).reverse();
 
       setCategories(uniqueCategoriesArray);
 
