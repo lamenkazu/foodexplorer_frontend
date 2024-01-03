@@ -131,7 +131,7 @@ export const Recipe = styled.button`
     font-size: 2.5rem;
   }
 
-  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     display: none;
   }
 `;
@@ -236,5 +236,23 @@ export const SignOut = styled.div`
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     display: block;
+  }
+`;
+
+export const TextButton = styled.button`
+  display: none;
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    display: block;
+    border: none;
+    background: none;
+    white-space: nowrap;
+    padding: 1rem 0;
+
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 16px */
+    font-family: Roboto;
   }
 `;

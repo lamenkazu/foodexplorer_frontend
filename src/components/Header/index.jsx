@@ -17,6 +17,7 @@ import {
   Btn,
   StyledLink,
   Empty,
+  TextButton,
 } from "./styles";
 
 import brandImg from "../../assets/Brand.png";
@@ -44,6 +45,11 @@ export const Header = () => {
     setSideBar(false);
   };
 
+  const handleFavoriteList = () => {
+    navigate("/favorites");
+    setSideBar(false);
+  };
+
   return (
     <Container>
       {sideBar && (
@@ -60,6 +66,11 @@ export const Header = () => {
             </Search>
             {[USER_ROLE.ADMIN].includes(user.role) && (
               <SideBarItem onClick={handleNewDish}>Novo prato</SideBarItem>
+            )}
+            {[USER_ROLE.CUSTOMER].includes(user.role) && (
+              <SideBarItem onClick={handleFavoriteList}>
+                Meus Favoritos
+              </SideBarItem>
             )}
             <SideBarItem onClick={handleSignOut}>Sair</SideBarItem>
           </Content>
@@ -82,6 +93,8 @@ export const Header = () => {
 
       {![USER_ROLE.ADMIN].includes(user.role) ? (
         <>
+          <TextButton onClick={handleFavoriteList}>Meus Favoritos</TextButton>
+
           <StyledButton icon={PiReceiptLight} title="Pedidos (1)" />
           <Recipe>
             <PiReceiptLight />
