@@ -104,10 +104,11 @@ export const Header = () => {
           </Recipe>
         </>
       ) : (
-        <Btn onClick={handleNewDish}>Novo prato</Btn>
+        <>
+          <Btn onClick={handleNewDish}>Novo prato</Btn>
+          <Empty />
+        </>
       )}
-
-      {[USER_ROLE.ADMIN].includes(user.role) && <Empty />}
 
       <SignOut>
         <GoSignOut onClick={handleSignOut} />
