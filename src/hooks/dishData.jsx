@@ -37,12 +37,28 @@ const DishDataProvider = ({ children }) => {
     }
   });
 
+  const getDishById = useCallback(async (id) => {
+    try {
+      if (loading) return;
+
+      const response = await api.get(`/Dishes/${id}`);
+
+      return response.data;
+    } catch (err) {
+      if (err.response) {
+        alert(err.response.data.message);
+      } else {
+        alert("Não foi possível acessar os dados desse prato.");
+      }
+    }
+  });
+
   const updateDish = useCallback(async (dish, dishFile) => {
     const { dish_id, title, category, price, ingredients, description } = dish;
     try {
       if (loading) return;
 
-      return api
+      return await api
         .put(`/Dishes/${dish_id}`, {
           title,
           category,
@@ -66,7 +82,7 @@ const DishDataProvider = ({ children }) => {
     try {
       if (loading) return;
 
-      return api.delete(`/Dishes/${id}`).then(() => {
+      return await api.delete(`/Dishes/${id}`).then(() => {
         alert("Prato deletado com sucesso");
       });
     } catch (err) {
@@ -134,13 +150,41 @@ const DishDataProvider = ({ children }) => {
     }
   });
 
-  const getDishById = useCallback(async (id) => {
+  const isFavorite = useCallback(async (id) => {
     try {
       if (loading) return;
 
-      const response = await api.get(`/Dishes/${id}`);
+      const response = await api.get(`/Dishes/favorite/${id}`);
 
       return response.data;
+    } catch (err) {
+      if (err.response) {
+        alert(err.response.data.message);
+      } else {
+        alert("Não foi possível acessar os dados desse prato.");
+      }
+    }
+  });
+
+  const favDish = useCallback(async (id) => {
+    try {
+      if (loading) return;
+
+      return await api.post(`Dishes/favorite/${id}`);
+    } catch (err) {
+      if (err.response) {
+        alert(err.response.data.message);
+      } else {
+        alert("Não foi possível acessar os dados desse prato.");
+      }
+    }
+  });
+
+  const unfavDish = useCallback(async (id) => {
+    try {
+      if (loading) return;
+
+      return await api.delete(`Dishes/favorite/${id}`);
     } catch (err) {
       if (err.response) {
         alert(err.response.data.message);
@@ -163,6 +207,9 @@ const DishDataProvider = ({ children }) => {
       createNewDish,
       updateDish,
       deleteDish,
+      isFavorite,
+      favDish,
+      unfavDish,
     }),
     [
       getDishImage,
@@ -172,6 +219,9 @@ const DishDataProvider = ({ children }) => {
       createNewDish,
       updateDish,
       deleteDish,
+      isFavorite,
+      favDish,
+      unfavDish,
     ]
   );
 

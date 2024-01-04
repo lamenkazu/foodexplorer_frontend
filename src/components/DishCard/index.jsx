@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useAuth } from "../../hooks/auth";
 import { useDishData } from "../../hooks/dishData";
 
@@ -14,7 +15,8 @@ import {
 import { Stepper } from "../Stepper";
 import { Empty } from "../../components/Empty";
 
-import { CiHeart } from "react-icons/ci";
+import { IoMdHeartEmpty } from "react-icons/io";
+import { IoMdHeart } from "react-icons/io";
 import { PiPencilSimpleLight } from "react-icons/pi";
 
 import { USER_ROLE } from "../../utils/roles";
@@ -24,7 +26,9 @@ export const DishCard = ({ data }) => {
   const navigate = useNavigate();
 
   const { user } = useAuth();
-  const { getDishImage } = useDishData();
+  const { getDishImage, isFavorite, favDish, unfavDish } = useDishData();
+
+  const [favorite, setFavorite] = useState(false);
 
   const dishImg = getDishImage(data.image);
 
@@ -32,10 +36,32 @@ export const DishCard = ({ data }) => {
     navigate(`/edit/${data.dish_id}`);
   };
 
+  const handleFavorite = () => {
+    if (favorite) {
+      unfavDish(data.dish_id);
+      setFavorite(false);
+    } else {
+      favDish(data.dish_id);
+      setFavorite(true);
+    }
+  };
+
+  useEffect(() => {
+    const checkIfDishIsFavorite = async () => {
+      setFavorite(await isFavorite(data.dish_id));
+    };
+
+    checkIfDishIsFavorite();
+  }, []);
+
   return (
     <Container>
       {![USER_ROLE.ADMIN].includes(user.role) ? (
-        <CiHeart />
+        favorite ? (
+          <IoMdHeart onClick={handleFavorite} />
+        ) : (
+          <IoMdHeartEmpty onClick={handleFavorite} />
+        )
       ) : (
         <PiPencilSimpleLight onClick={goToEditPage} />
       )}
