@@ -150,6 +150,21 @@ const DishDataProvider = ({ children }) => {
     }
   });
 
+  const getFavoriteDishes = useCallback(async () => {
+    try {
+      if (loading) return;
+      const response = await api.get("/Dishes/favorite/index");
+
+      return response.data;
+    } catch (err) {
+      if (err.response) {
+        alert(err.response.data.message);
+      } else {
+        alert("Não foi possível acessar o banco de dados");
+      }
+    }
+  });
+
   const isFavorite = useCallback(async (id) => {
     try {
       if (loading) return;
@@ -207,6 +222,7 @@ const DishDataProvider = ({ children }) => {
       createNewDish,
       updateDish,
       deleteDish,
+      getFavoriteDishes,
       isFavorite,
       favDish,
       unfavDish,
@@ -219,6 +235,7 @@ const DishDataProvider = ({ children }) => {
       createNewDish,
       updateDish,
       deleteDish,
+      getFavoriteDishes,
       isFavorite,
       favDish,
       unfavDish,
