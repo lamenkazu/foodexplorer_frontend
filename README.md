@@ -9,17 +9,21 @@
 ![Static Badge](https://img.shields.io/badge/Lib%20-%20React%20%2B%20Vite%20-%20%23065E7C)
 ![Static Badge](https://img.shields.io/badge/FetchWith%20-%20Axios%20-%20%23065E7C)
 ![Static Badge](https://img.shields.io/badge/Style%20-%20Styled%20Components-%20%23065E7C)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a7932004-3f7d-4c68-8e3f-9beb31a28fc0/deploy-status)](https://app.netlify.com/sites/foodexplorer-frontend-3cc695/deploys)
 
 </div>
 
 <h4 align="center"> 🚧 🚀 Em construção... 🚧 </h4>
 
 # Deploy
+Para visualizar o funcionamento do site você pode acessar o [link do Deploy.](https://foodexplorer-frontend-3cc695.netlify.app)
+
+Em caso de problemas, **funciona melhor no Google Chrome!**
 
 # Getting Started
-Abra o terminal na pasta com o projeto e execute os comandos para instalação e execução da aplicação:
+Caso queira usar sua versão do código, basta abrir o terminal na pasta com o projeto e execute os comandos para instalação e execução da aplicação:
 - npm i
-- npm start
+- npm run dev
 
 # Sobre o Projeto
 Bem-vindo! Abaixo, apresentamos uma visão geral do frontend deste projeto, desenvolvido como parte do desafio final do Explorer.
