@@ -3,10 +3,10 @@ import { Routes, Route } from "react-router-dom";
 import { AppLayout } from "../layouts/AppLayout";
 
 import { Home } from "../pages/Home";
-import { ViewDish } from "../pages/ViewDish/index";
-import { NewDish } from "../pages/NewDish/index";
-import { EditDish } from "../pages/EditDish/index";
-import { NotFound } from "../pages/NotFound/index";
+import { ViewDish } from "../pages/ViewDish";
+import { NewDish } from "../pages/NewDish";
+import { EditDish } from "../pages/EditDish";
+import { NotFound } from "../pages/NotFound";
 
 export function AdminRoutes() {
   return (
