@@ -106,7 +106,7 @@ export const StyledLink = styled(Link)`
 
     > img {
       width: 19.7rem;
-      min-height: 2.9rem;
+      min-height: 3rem;
     }
   }
 `;

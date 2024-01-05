@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { useAuth } from "../../hooks/auth";
 import { useDishData } from "../../hooks/dishData";
+
+import { USER_ROLE } from "../../utils/roles";
 
 import {
   Container,
@@ -15,12 +19,8 @@ import {
 import { Stepper } from "../Stepper";
 import { Empty } from "../../components/Empty";
 
-import { IoMdHeartEmpty } from "react-icons/io";
-import { IoMdHeart } from "react-icons/io";
+import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 import { PiPencilSimpleLight } from "react-icons/pi";
-
-import { USER_ROLE } from "../../utils/roles";
-import { useNavigate } from "react-router-dom";
 
 export const DishCard = ({ data }) => {
   const navigate = useNavigate();
@@ -51,7 +51,7 @@ export const DishCard = ({ data }) => {
       setFavorite(await isFavorite(data.dish_id));
     };
 
-    checkIfDishIsFavorite();
+    if (![USER_ROLE.ADMIN].includes(user.role)) checkIfDishIsFavorite();
   }, []);
 
   return (
