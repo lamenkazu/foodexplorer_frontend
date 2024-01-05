@@ -25,7 +25,7 @@ Caso queira usar sua versão do código, basta abrir o terminal na pasta com o p
 - npm i
 - npm run dev
 
-## Você pode acessar as funcionalidades de Admin através da conta abaixo:
+### Você pode acessar as funcionalidades de Admin através da conta abaixo:
 email: 333@mail.com
 senha: 123
 
