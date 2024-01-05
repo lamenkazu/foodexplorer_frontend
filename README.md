@@ -25,6 +25,10 @@ Caso queira usar sua versão do código, basta abrir o terminal na pasta com o p
 - npm i
 - npm run dev
 
+## Você pode acessar as funcionalidades de Admin através da conta abaixo:
+email: 333@mail.com
+senha: 123
+
 # Sobre o Projeto
 Bem-vindo! Abaixo, apresentamos uma visão geral do frontend deste projeto, desenvolvido como parte do desafio final do Explorer.
 O frontend foi projetado para proporcionar uma experiência de usuário envolvente e intuitiva, seguindo o layout fornecido no Figma. O objetivo é criar telas que permitam a interação com os pratos do restaurante, garantindo uma navegação suave e agradável.
