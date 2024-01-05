@@ -12,9 +12,7 @@
 
 </div>
 
-<h4 align="center"> 
-	🚧 🚀 Em construção... 🚧
-</h4>
+<h4 align="center"> 🚧 🚀 Em construção... 🚧 </h4>
 
 # Deploy
 
@@ -140,11 +138,19 @@ O código está organizado de maneira modular e seguindo as melhores práticas d
 
 ### Para um usuário admin:
 - [x]  Esconder opção de quantidade do prato;
-- [x]  Substituir texto do botão de **Inserir** por **Editar***;*
+- [x]  Substituir texto do botão de **Inserir** por **Editar***;
 
 ### Tela de edição e exclusão de um prato - Apenas para usuários admin:
 - [x]  *Mobile-first*
 - [x]  Mesmos dados da tela de criação de um prato;
 - [x]  Adicionar botão de Excluir;
+
+- [x]  Desktop
+
+### Tela de visualização dos pratos favoritos
+- [x]  *Mobile-first*
+- [x]  Carregar imagem do prato;
+- [x]  Carregar nome do prato;
+- [x]  Botão para remoção do prato dos favoritos;
 
 - [x]  Desktop
