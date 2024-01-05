@@ -14,7 +14,7 @@ import {
   ContentDetails,
   IngredientTags,
 } from "./styles";
-import { Stepper } from "./../../components/Stepper";
+import { Stepper } from "../../components/Stepper";
 import { Empty } from "../../components/Empty";
 import { GoBack } from "../../components/GoBack";
 
