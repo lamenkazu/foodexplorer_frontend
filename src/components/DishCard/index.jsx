@@ -51,7 +51,7 @@ export const DishCard = ({ data }) => {
       setFavorite(await isFavorite(data.dish_id));
     };
 
-    if (![USER_ROLE.ADMIN].includes(user.role)) checkIfDishIsFavorite();
+    if ([USER_ROLE.CUSTOMER].includes(user.role)) checkIfDishIsFavorite();
   }, []);
 
   return (
