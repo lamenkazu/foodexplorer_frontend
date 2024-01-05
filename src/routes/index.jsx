@@ -28,14 +28,16 @@ export const Routes = () => {
 };
 
 const AccessRoute = ({ user }) => {
-  switch (user.role) {
-    case USER_ROLE.ADMIN:
-      return <AdminRoutes />;
+  if (user) {
+    switch (user.role) {
+      case USER_ROLE.ADMIN:
+        return <AdminRoutes />;
 
-    case USER_ROLE.CUSTOMER:
-      return <CustomerRoutes />;
+      case USER_ROLE.CUSTOMER:
+        return <CustomerRoutes />;
 
-    default:
-      return <CustomerRoutes />;
+      default:
+        return <CustomerRoutes />;
+    }
   }
 };
